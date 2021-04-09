@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule, Component } from "@angular/core";
-import { Level4LibraryModule } from "./library-4.module";
+import { LibraryModule } from "./library.module";
 
 @Component({
   selector: "level-4",
@@ -26,13 +26,13 @@ import { Level4LibraryModule } from "./library-4.module";
       </ul>
       <hr />
       <fieldset>
-        <legend>Level4Module</legend>
+        <legend>AppModule</legend>
         <lib-component></lib-component>
       </fieldset>
     </fieldset>
   `
 })
-export class Level4Component {}
+export class AppComponent {}
 
 @NgModule({
   imports: [
@@ -40,8 +40,8 @@ export class Level4Component {}
 
     // Import the library and provide Config
     // The library deals with providers syntax itself
-    Level4LibraryModule.forRoot({ name: "Level4Module" })
+    LibraryModule.forRoot({ name: "AppModule" })
   ],
-  declarations: [Level4Component]
+  declarations: [AppComponent]
 })
-export class Level4Module {}
+export class AppModule {}

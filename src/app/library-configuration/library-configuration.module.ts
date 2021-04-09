@@ -1,10 +1,9 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { Level1Component, Level1Module } from "./level-1.module/level-1.module";
-import { Level2Component, Level2Module } from "./level-2.module/level-2.module";
-import { Level3Component, Level3Module } from "./level-3.module/level-3.module";
-import { Level4Module } from "./level-4.module/level-4.module";
-import { Level4Component } from "./level-4.module/level-4.module";
+import * as Level1 from "./level-1/app.module";
+import * as Level2 from "./level-2/app.module";
+import * as Level3 from "./level-3/app.module";
+import * as Level4 from "./level-4/app.module";
 
 /*
 TODO:
@@ -14,26 +13,26 @@ TODO:
 */
 @NgModule({
   imports: [
-    Level1Module,
-    Level2Module,
-    Level3Module,
-    Level4Module,
+    Level1.AppModule,
+    Level2.AppModule,
+    Level3.AppModule,
+    Level4.AppModule,
     RouterModule.forChild([
       {
         path: "1",
-        component: Level1Component
+        component: Level1.AppComponent
       },
       {
         path: "2",
-        component: Level2Component
+        component: Level2.AppComponent
       },
       {
         path: "3",
-        component: Level3Component
+        component: Level3.AppComponent
       },
       {
         path: "4",
-        component: Level4Component
+        component: Level4.AppComponent
       },
       {
         path: "**",

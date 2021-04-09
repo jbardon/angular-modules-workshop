@@ -1,34 +1,34 @@
 import { CommonModule } from "@angular/common";
 import { Component, NgModule } from "@angular/core";
-import { Level2LibraryModule } from "./library-2.module";
+import { LibraryModule } from "./library.module";
 
 @Component({
   selector: "level-2-a",
   template: `
     <fieldset>
-      <legend>Level2ModuleA (lazy loaded)</legend>
+      <legend>ModuleA (lazy loaded)</legend>
 
-      <!-- Same value as in Level1Module -->
+      <!-- Same value as in AppModule -->
       <lib-component></lib-component>
     </fieldset>
   `
 })
-export class Level2ComponentA {}
+export class ComponentA {}
 
 @NgModule({
   imports: [
     CommonModule,
 
     // Import in lazy loaded module uses forChild instead of forRoot
-    Level2LibraryModule.forChild()
+    LibraryModule.forChild()
   ],
-  declarations: [Level2ComponentA],
-  exports: [Level2ComponentA]
+  declarations: [ComponentA],
+  exports: [ComponentA]
 })
-export class Level2ModuleA {}
+export class ModuleA {}
 
 // For easy lazy loading
 export default {
-  moduleClass: Level2ModuleA,
-  componentClass: Level2ComponentA
+  moduleClass: ModuleA,
+  componentClass: ComponentA
 };

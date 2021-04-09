@@ -1,7 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule, Component } from "@angular/core";
-import { Level3LibraryConfig } from "./library-3.module";
-import { Level3LibraryModule } from "./library-3.module";
+import { LibraryConfig, LibraryModule } from "./library.module";
 
 @Component({
   selector: "level-3",
@@ -19,25 +18,25 @@ import { Level3LibraryModule } from "./library-3.module";
       </ul>
       <hr />
       <fieldset>
-        <legend>Level3Module</legend>
+        <legend>AppModule</legend>
         <lib-component></lib-component>
       </fieldset>
     </fieldset>
   `
 })
-export class Level3Component {}
+export class AppComponent {}
 
 @NgModule({
   imports: [
     CommonModule,
 
-    // Import the libray module here
-    Level3LibraryModule
+    // Import the library module here
+    LibraryModule
   ],
   providers: [
     // Provide config value for the library
-    { provide: Level3LibraryConfig, useValue: { name: "Level3Module" } }
+    { provide: LibraryConfig, useValue: { name: "AppModule" } }
   ],
-  declarations: [Level3Component]
+  declarations: [AppComponent]
 })
-export class Level3Module {}
+export class AppModule {}

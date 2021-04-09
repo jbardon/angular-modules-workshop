@@ -9,16 +9,14 @@ import {
   SkipSelf
 } from "@angular/core";
 
-export class Level2LibraryConfig {
-  name: string;
-}
+export const LIB_CONFIG = new InjectionToken<string>("Lib config");
 
 @Component({
   selector: "lib-component",
-  template: "<p>libraryConfig.name: {{ libraryConfig.name | json }}</p>"
+  template: "<p>LIB_CONFIG: {{ libraryConfig | json }}</p>"
 })
-export class Level2LibraryComponent {
-  constructor(public libraryConfig: Level2LibraryConfig) {}
+export class LibraryComponent {
+  constructor(@Inject(LIB_CONFIG) public libraryConfig) {}
 }
 
 const FOR_ROOT_TOKEN = new InjectionToken<boolean>(
@@ -27,19 +25,19 @@ const FOR_ROOT_TOKEN = new InjectionToken<boolean>(
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [Level2LibraryComponent],
-  exports: [Level2LibraryComponent]
+  declarations: [LibraryComponent],
+  exports: [LibraryComponent]
 })
-export class Level2LibraryModule {
+export class LibraryModule {
   constructor(@Optional() @Inject(FOR_ROOT_TOKEN) rootToken: boolean) {}
 
-  public static forRoot(): ModuleWithProviders<Level2LibraryModule> {
+  public static forRoot(): ModuleWithProviders<LibraryModule> {
     return {
-      ngModule: Level2LibraryModule,
+      ngModule: LibraryModule,
       providers: [
         {
-          provide: Level2LibraryConfig,
-          useFactory: () => ({ name: "Overrided by Level2Module" })
+          provide: LIB_CONFIG,
+          useValue: "LibraryModule"
         },
 
         // This token is only provided in forRoot
@@ -51,20 +49,20 @@ export class Level2LibraryModule {
             if (config) {
               // Usually use new Error to make the page crash
               console.error(
-                "Level2LibraryModule.forRoot called twice, use forChild on lazy loaded modules"
+                "[Level2] LibraryModule.forRoot called twice, use forChild on lazy loaded modules"
               );
             }
             return !!config;
           },
-          deps: [[Level2LibraryConfig, new Optional(), new SkipSelf()]]
+          deps: [[LIB_CONFIG, new Optional(), new SkipSelf()]]
         }
       ]
     };
   }
 
-  public static forChild(): ModuleWithProviders<Level2LibraryModule> {
+  public static forChild(): ModuleWithProviders<LibraryModule> {
     return {
-      ngModule: Level2LibraryModule
+      ngModule: LibraryModule
       // Do not provide again config value here
     };
   }

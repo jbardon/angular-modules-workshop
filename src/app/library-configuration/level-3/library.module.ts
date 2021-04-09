@@ -1,7 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component, NgModule } from "@angular/core";
 
-export class Level3LibraryConfig {
+export class LibraryConfig {
   name: string;
 }
 
@@ -9,13 +9,13 @@ export class Level3LibraryConfig {
   selector: "lib-component",
   template: "<p>libraryConfig.name: {{ libraryConfig.name | json }}</p>"
 })
-export class Level3LibraryComponent {
-  constructor(public libraryConfig: Level3LibraryConfig) {}
+export class LibraryComponent {
+  constructor(public libraryConfig: LibraryConfig) {}
 }
 
 @NgModule({
   imports: [CommonModule],
-  declarations: [Level3LibraryComponent],
-  exports: [Level3LibraryComponent]
+  declarations: [LibraryComponent],
+  exports: [LibraryComponent]
 })
-export class Level3LibraryModule {}
+export class LibraryModule {}
