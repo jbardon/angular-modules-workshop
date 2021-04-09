@@ -10,6 +10,20 @@ TODO:
 - Use providers in libraries: forRoot with params, tokens, factories, app_init
 - Private injector with stream (taiga)
 - Injector & directive to avoid props drilling
+
+PATTERNS:
+- exportAs:  https://netbasal.com/angular-2-take-advantage-of-the-exportas-property-81374ce24d26 
+- extends component with directive
+- use Host, DI and Query directive: https://netbasal.com/querying-for-the-closest-parent-element-in-angular-b2554d60c47e 
+- keep regular htlm tags: component selector+ng-content instead of directive
+- provide thing with outer component and export as OR structural directive:  https://netbasal.com/going-renderless-in-angular-all-of-the-functionality-none-of-the-render-1b105e001c8a
+- address prop drilling with DI: https://indepth.dev/posts/1443/how-we-make-our-base-components-more-flexible-controllers-concept-in-angular
+- private providers: https://indepth.dev/posts/1306/private-providers (tuiwrapper)
+- component provider DI with service ElementRef
+- polymorpheus: https://indepth.dev/posts/1314/agnostic-components-in-angular
+- library with example and service+directive thing: https://indepth.dev/posts/1197/what-makes-a-good-angular-library
+
+Generic + polymorphous + css properties + handlers
 */
 export const libraryConfigurationModuleRoutes: Routes = [
   {

@@ -1,21 +1,22 @@
-import { CommonModule } from "@angular/common";
-import { Component, NgModule } from "@angular/core";
+import { InjectionToken, NgModule, Inject, Injectable } from "@angular/core";
 
-export class LibraryConfig {
-  name: string;
-}
-
-@Component({
-  selector: "lib-component",
-  template: "<p>libraryConfig.name: {{ libraryConfig.name | json }}</p>"
-})
-export class LibraryComponent {
-  constructor(public libraryConfig: LibraryConfig) {}
-}
+export const LIB_CONFIG = new InjectionToken<string>("Lib config");
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [LibraryComponent],
-  exports: [LibraryComponent]
+  providers: [
+    {
+      provide: LIB_CONFIG,
+      useValue: "LibraryModule"
+    }
+  ]
 })
-export class LibraryModule {}
+export class LibraryModule {
+  constructor() {
+    console.count("[Level3] LibraryModule loaded");
+  }
+}
+
+@Injectable({ providedIn: 'root' })
+export class LibraryService {
+  constructor(@Inject(LIB_CONFIG) public config) {}
+}

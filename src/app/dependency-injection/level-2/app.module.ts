@@ -49,6 +49,5 @@ export class AppModule {}
 // Token defined at module level (no need for provider)
 // Can be overriden like other tokens
 export const TOKEN_C = new InjectionToken<TokenType>("Token C", {
-  factory: () => ({ property: "tokenC" }),
-  providedIn: AppModule
+  factory: () => ({ property: "tokenC" })
 });

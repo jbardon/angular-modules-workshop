@@ -1,58 +1,42 @@
 import { CommonModule } from "@angular/common";
-import {
-  NgModule,
-  Component,
-  ViewChild,
-  ViewContainerRef,
-  AfterViewInit
-} from "@angular/core";
-import { ModuleLoadingService } from "../../module-loading.service";
-import { LIB_CONFIG, LibraryModule, LibraryService } from "./library.module";
+import { NgModule, Component } from "@angular/core";
+import { LibraryConfig, LibraryModule } from "./library.module";
 
 @Component({
   selector: "level-1",
   template: `
     <fieldset>
-      <legend>Level 1: Issue without forRoot/forChild</legend>
+      <legend>Level 1: Provide config from app</legend>
       <p>Takeaways</p>
       <ul>
         <li>
-          LibraryModule is imported in both AppModule and ModuleA
+          LibraryComponent needs a configuration to work
         </li>
         <li>
-          ModuleA don't share the same instance of the config because it's lazy
-          loaded
+          It's the app job to provide a configuration in its module
         </li>
       </ul>
       <hr />
       <fieldset>
         <legend>AppModule</legend>
-        <p>libraryService.config: {{ libraryService.config | json }}</p>
-
-        <ng-container #componentA></ng-container>
+        <lib-component></lib-component>
       </fieldset>
     </fieldset>
-  `,
-  providers: [ModuleLoadingService]
+  `
 })
-export class AppComponent implements AfterViewInit {
-  @ViewChild("componentA", { read: ViewContainerRef })
-  container: ViewContainerRef;
-
-  constructor(
-    public libraryService: LibraryService,
-    private moduleLoadingService: ModuleLoadingService
-  ) {}
-
-  ngAfterViewInit() {
-    this.moduleLoadingService.lazyLoad(import("./a.module"), this.container);
-  }
-}
+export class AppComponent {}
 
 @NgModule({
-  // Import library in eagerly loaded module
-  imports: [CommonModule, LibraryModule],
-  providers: [{ provide: LIB_CONFIG, useValue: "AppModule" }],
+  imports: [
+    CommonModule,
+
+    // Import the library module here
+    LibraryModule
+  ],
+  providers: [
+    // Provide config value for the library
+    { provide: LibraryConfig, useValue: { name: "AppModule" } }
+  ],
   declarations: [AppComponent]
 })
 export class AppModule {}

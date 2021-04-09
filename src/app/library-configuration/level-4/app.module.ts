@@ -1,46 +1,65 @@
 import { CommonModule } from "@angular/common";
-import { NgModule, Component } from "@angular/core";
-import { LibraryModule } from "./library.module";
+import {
+  NgModule,
+  Component,
+  ViewChild,
+  ViewContainerRef,
+  AfterViewInit
+} from "@angular/core";
+import { ModuleLoadingService } from "../../module-loading.service";
+import { LibraryModule, LibraryService } from "./library.module";
 
 @Component({
   selector: "level-4",
   template: `
     <fieldset>
-      <legend>Level 4: forRoot syntax to provide configuration</legend>
+      <legend>Level 4: Provide once with forRoot</legend>
       <p>Takeaways</p>
       <ul>
         <li>
-          Hide providers syntax into the library with forRoot
+          LibraryModule is imported in both Level1Module and ModuleA and
+          config keep the same value
         </li>
         <li>
-          forRoot syntax is shorter than importing the module and providing
-          config in the app
+          forRoot must be called once in AppModule providing unique config
         </li>
         <li>
-          It's always possible to not use forRoot method and do import + provide
-          like in level 3.
-        </li>
-        <li>
-          This example is simplified and don't support forChild (see level 2)
+          forChild can be used any time providing everything except config
         </li>
       </ul>
       <hr />
       <fieldset>
         <legend>AppModule</legend>
-        <lib-component></lib-component>
+        <p>libraryService.config: {{ libraryService.config }}</p>
+
+        <ng-container #componentA></ng-container>
       </fieldset>
     </fieldset>
-  `
+  `,
+  providers: [ModuleLoadingService]
 })
-export class AppComponent {}
+export class AppComponent implements AfterViewInit {
+  @ViewChild("componentA", { read: ViewContainerRef }) container: ViewContainerRef;
+
+  constructor(
+    public libraryService: LibraryService, 
+    private moduleLoadingService: ModuleLoadingService
+  ) {}
+
+  ngAfterViewInit() {
+    this.moduleLoadingService.lazyLoad(
+      import("./a.module"),
+      this.container
+    );
+  }
+}
 
 @NgModule({
   imports: [
     CommonModule,
 
-    // Import the library and provide Config
-    // The library deals with providers syntax itself
-    LibraryModule.forRoot({ name: "AppModule" })
+    // Call forRoot method instead of using the class
+    LibraryModule.forRoot()
   ],
   declarations: [AppComponent]
 })

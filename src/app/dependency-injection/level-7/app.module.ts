@@ -64,6 +64,5 @@ export class AppModule {}
 
 // inject can be used in a factory function
 export const TOKEN_E = new InjectionToken<string>("TokenE", {
-  factory: () => inject(TOKEN_B) + "E",
-  providedIn: AppModule
+  factory: () => inject(TOKEN_B) + "E"
 });
