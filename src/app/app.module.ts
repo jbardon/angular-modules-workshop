@@ -107,6 +107,7 @@ export class AppComponent {
     //
     //     Lazy loading courses would make level module providers
     //     not available for main AppModule and throw an error
+    //
     RouterModule.forRoot(
       [
         {
