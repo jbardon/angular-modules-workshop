@@ -1,6 +1,18 @@
 import { NgModule, Component } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { Router, RouterModule } from "@angular/router";
+import {
+  ComponentDeclarationModule,
+  componentDeclarationModuleRoutes
+} from "./component-declaration/component-declaration.module";
+import {
+  DependencyInjectionModule,
+  dependencyInjectionModuleRoutes
+} from "./dependency-injection/dependency-injection.module";
+import {
+  LibraryConfigurationModule,
+  libraryConfigurationModuleRoutes
+} from "./library-configuration/library-configuration.module";
 
 /*
 Notes:
@@ -83,28 +95,31 @@ export class AppComponent {
 @NgModule({
   imports: [
     BrowserModule,
+    DependencyInjectionModule,
+    ComponentDeclarationModule,
+    LibraryConfigurationModule,
+
+    // Don't use lazy load for each course
+    // So levels in courses can test modules eager loading
+    //
+    // Ex: @Injectable({ providedIn: 'root' }) with constructor
+    //     injection and token provided in level module.
+    //
+    //     Lazy loading courses would make level module providers
+    //     not available for main AppModule and throw an error
     RouterModule.forRoot(
       [
         {
           path: "dependency-injection",
-          loadChildren: () =>
-            import("./dependency-injection/dependency-injection.module").then(
-              m => m.DependencyInjectionModule
-            )
+          children: dependencyInjectionModuleRoutes
         },
         {
           path: "component-declaration",
-          loadChildren: () =>
-            import("./component-declaration/component-declaration.module").then(
-              m => m.ComponentDeclarationModule
-            )
+          children: componentDeclarationModuleRoutes
         },
         {
           path: "library-configuration",
-          loadChildren: () =>
-            import("./library-configuration/library-configuration.module").then(
-              m => m.LibraryConfigurationModule
-            )
+          children: libraryConfigurationModuleRoutes
         },
         {
           path: "",
