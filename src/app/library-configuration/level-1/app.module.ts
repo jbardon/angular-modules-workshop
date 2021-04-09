@@ -7,7 +7,7 @@ import {
   AfterViewInit
 } from "@angular/core";
 import { ModuleLoadingService } from "../../module-loading.service";
-import { LIB_CONFIG, LibraryModule } from "./library.module";
+import { LIB_CONFIG, LibraryModule, LibraryService } from "./library.module";
 
 @Component({
   selector: "level-1",
@@ -27,7 +27,7 @@ import { LIB_CONFIG, LibraryModule } from "./library.module";
       <hr />
       <fieldset>
         <legend>AppModule</legend>
-        <lib-component></lib-component>
+        <p>libraryService.config: {{ libraryService.config | json }}</p>
 
         <ng-container #componentA></ng-container>
       </fieldset>
@@ -39,7 +39,10 @@ export class AppComponent implements AfterViewInit {
   @ViewChild("componentA", { read: ViewContainerRef })
   container: ViewContainerRef;
 
-  constructor(private moduleLoadingService: ModuleLoadingService) {}
+  constructor(
+    public libraryService: LibraryService,
+    private moduleLoadingService: ModuleLoadingService
+  ) {}
 
   ngAfterViewInit() {
     this.moduleLoadingService.lazyLoad(import("./a.module"), this.container);

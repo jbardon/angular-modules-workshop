@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, NgModule } from "@angular/core";
-import { LibraryModule } from "./library.module";
+import { LibraryModule, LibraryService } from "./library.module";
 
 @Component({
   selector: "level-1-a",
@@ -9,11 +9,13 @@ import { LibraryModule } from "./library.module";
       <legend>ModuleA (lazy loaded)</legend>
 
       <!-- Not have the same value as in AppModule -->
-      <lib-component></lib-component>
+      <p>libraryService.config: {{ libraryService.config }}</p>
     </fieldset>
   `
 })
-export class ComponentA {}
+export class ComponentA {
+  constructor(public libraryService: LibraryService) {}
+}
 
 @NgModule({
   // Import library in lazy loaded module

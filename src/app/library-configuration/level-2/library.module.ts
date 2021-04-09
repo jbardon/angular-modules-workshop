@@ -2,6 +2,7 @@ import { CommonModule } from "@angular/common";
 import {
   Component,
   Inject,
+  Injectable,
   InjectionToken,
   ModuleWithProviders,
   NgModule,
@@ -11,22 +12,12 @@ import {
 
 export const LIB_CONFIG = new InjectionToken<string>("Lib config");
 
-@Component({
-  selector: "lib-component",
-  template: "<p>LIB_CONFIG: {{ libraryConfig | json }}</p>"
-})
-export class LibraryComponent {
-  constructor(@Inject(LIB_CONFIG) public libraryConfig) {}
-}
-
 const FOR_ROOT_TOKEN = new InjectionToken<boolean>(
   "Level2LibraryModule.forRoot"
 );
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [LibraryComponent],
-  exports: [LibraryComponent]
+  imports: [CommonModule]
 })
 export class LibraryModule {
   constructor(@Optional() @Inject(FOR_ROOT_TOKEN) rootToken: boolean) {}
@@ -66,4 +57,9 @@ export class LibraryModule {
       // Do not provide again config value here
     };
   }
+}
+
+@Injectable({ providedIn: LibraryModule })
+export class LibraryService {
+  constructor(@Inject(LIB_CONFIG) public config) {}
 }
