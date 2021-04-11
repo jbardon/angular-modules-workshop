@@ -15,11 +15,9 @@ import { ModuleB } from "./b.module";
         </li>
       </ul>
       <hr />
-      <fieldset>
-        <legend>AppModule</legend>
-        <level-1-a></level-1-a>
-        <level-1-b></level-1-b>
-      </fieldset>
+
+      <level-1-a></level-1-a><br />
+      <level-1-b></level-1-b>
     </fieldset>
   `
 })
