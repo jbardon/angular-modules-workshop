@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, NgModule } from "@angular/core";
+import { Component, NgModule, Host, Op } from "@angular/core";
 
 @Component({
   selector: "level-1-a",
@@ -20,6 +20,7 @@ export class ComponentA {
     <fieldset>
       <legend>ChildComponentA</legend>
       <p>componentA.name: {{ componentA.name | json }}</p>
+      <level-1-a-1-1></level-1-a-1-1>
     </fieldset>
   `
 })
@@ -27,9 +28,22 @@ export class ChildComponentA {
   constructor(public componentA: ComponentA) {}
 }
 
+@Component({
+  selector: "level-1-a-1-1",
+  template: `
+    <fieldset>
+      <legend>BabyComponentA</legend>
+      <p>componentA.name: {{ componentA?.name | json }}</p>
+    </fieldset>
+  `
+})
+export class BabyComponentA {
+  constructor(@Host() @Optional() public componentA: ComponentA) {}
+}
+
 @NgModule({
   imports: [CommonModule],
-  declarations: [ComponentA, ChildComponentA],
+  declarations: [ComponentA, ChildComponentA, BabyComponentA],
   exports: [ComponentA]
 })
 export class ModuleA {}
