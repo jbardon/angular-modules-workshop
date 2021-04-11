@@ -4,15 +4,15 @@ import { Router, RouterModule } from "@angular/router";
 import {
   ComponentDeclarationModule,
   componentDeclarationModuleRoutes
-} from "./component-declaration/component-declaration.module";
+} from "./1-component-declaration/component-declaration.module";
 import {
   DependencyInjectionModule,
   dependencyInjectionModuleRoutes
-} from "./dependency-injection/dependency-injection.module";
+} from "./2-dependency-injection/dependency-injection.module";
 import {
   LibraryConfigurationModule,
   libraryConfigurationModuleRoutes
-} from "./library-configuration/library-configuration.module";
+} from "./3-library-configuration/library-configuration.module";
 
 /*
 Notes:
@@ -63,16 +63,16 @@ Notes:
 export class AppComponent {
   courses = [
     {
-      name: "DI",
-      tooltip: "Dependency injection",
-      path: "/dependency-injection",
-      levels: [0, 1, 2, 3, 4, 5, 6, 7]
-    },
-    {
       name: "Component",
       tooltip: "Component declaration",
       path: "/component-declaration",
       levels: [0, 1, 2]
+    },
+    {
+      name: "DI",
+      tooltip: "Dependency injection",
+      path: "/dependency-injection",
+      levels: [0, 1, 2, 3, 4, 5, 6, 7]
     },
     {
       name: "Library",
@@ -111,12 +111,12 @@ export class AppComponent {
     RouterModule.forRoot(
       [
         {
-          path: "dependency-injection",
-          children: dependencyInjectionModuleRoutes
-        },
-        {
           path: "component-declaration",
           children: componentDeclarationModuleRoutes
+        },
+        {
+          path: "dependency-injection",
+          children: dependencyInjectionModuleRoutes
         },
         {
           path: "library-configuration",
