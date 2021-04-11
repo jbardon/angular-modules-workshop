@@ -10,6 +10,7 @@ import { LibraryModule, LibraryService } from "./library.module";
 
       <!-- Not have the same value as in AppModule -->
       <p>libraryService.config: {{ libraryService.config }}</p>
+      <lib-component></lib-component>
     </fieldset>
   `
 })

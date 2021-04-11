@@ -27,7 +27,9 @@ import { LIB_CONFIG, LibraryModule, LibraryService } from "./library.module";
       <hr />
       <fieldset>
         <legend>AppModule</legend>
+
         <p>libraryService.config: {{ libraryService.config | json }}</p>
+        <lib-component></lib-component>
 
         <ng-container #componentA></ng-container>
       </fieldset>

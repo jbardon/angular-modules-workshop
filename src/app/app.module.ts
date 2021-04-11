@@ -13,6 +13,10 @@ import {
   LibraryConfigurationModule,
   libraryConfigurationModuleRoutes
 } from "./3-library-configuration/library-configuration.module";
+import {
+  DesignPatternsModule,
+  designPatternsModuleRoutes
+} from "./4-design-patterns/design-patterns.module";
 
 /*
 Notes:
@@ -79,6 +83,12 @@ export class AppComponent {
       tooltip: "Library configuration",
       path: "/library-configuration",
       levels: [1, 2, 3, 4]
+    },
+    {
+      name: "Patterns",
+      tooltip: "Design patterns",
+      path: "/design-patterns",
+      levels: [1]
     }
   ];
 
@@ -98,6 +108,7 @@ export class AppComponent {
     DependencyInjectionModule,
     ComponentDeclarationModule,
     LibraryConfigurationModule,
+    DesignPatternsModule,
 
     // Don't use lazy load for each course
     // So levels in courses can test modules eager loading
@@ -123,9 +134,13 @@ export class AppComponent {
           children: libraryConfigurationModuleRoutes
         },
         {
+          path: "design-patterns",
+          children: designPatternsModuleRoutes
+        },
+        {
           path: "",
           pathMatch: "full",
-          redirectTo: "dependency-injection"
+          redirectTo: "component-declaration"
         }
       ]
       //{ enableTracing: true }
