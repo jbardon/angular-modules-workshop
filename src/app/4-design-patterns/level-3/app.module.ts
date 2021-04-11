@@ -7,7 +7,8 @@ import {
   ContentChild,
   Renderer2,
   AfterViewInit,
-  OnDestroy
+  OnDestroy,
+  HostListener
 } from "@angular/core";
 
 @Component({
@@ -24,7 +25,7 @@ import {
       </ul>
       <hr />
       <div directiveA>Hello</div>
-      <div componentA>Hello</d>
+      <div componentA>Hello</div>
     </fieldset>
   `
 })
@@ -35,20 +36,20 @@ export class AppComponent {}
 })
 export class DirectiveA implements AfterViewInit, OnDestroy {
   private citeElement: HTMLElement;
-  private citeTextElement: HTMLElement;
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 
   ngAfterViewInit() {
     this.citeElement = this.renderer.createElement("cite");
-    this.citeTextElement = this.renderer.createText("jbardon");
+    const citeTextElement = this.renderer.createText("jbardon");
 
-    this.renderer.appendChild(this.citeElement, this.citeTextElement);
+    this.renderer.appendChild(this.citeElement, citeTextElement);
     this.renderer.appendChild(this.elementRef.nativeElement, this.citeElement);
   }
 
+
+
   ngOnDestroy() {
-    this.renderer.removeChild(this.citeElement, this.citeTextElement);
     this.renderer.removeChild(this.elementRef.nativeElement, this.citeElement);
   }
 }
