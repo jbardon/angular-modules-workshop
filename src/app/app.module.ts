@@ -88,7 +88,7 @@ export class AppComponent {
       name: "Patterns",
       tooltip: "Design patterns",
       path: "/design-patterns",
-      levels: [1]
+      levels: [1, 2]
     }
   ];
 
