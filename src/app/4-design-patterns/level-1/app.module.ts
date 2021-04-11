@@ -1,5 +1,6 @@
-import { CommonModule } from "@angular/common";
 import { NgModule, Component } from "@angular/core";
+import { ModuleA } from "./a.module";
+import { ModuleB } from "./b.module";
 
 @Component({
   selector: "level-1",
@@ -16,6 +17,8 @@ import { NgModule, Component } from "@angular/core";
       <hr />
       <fieldset>
         <legend>AppModule</legend>
+        <level-1-a></level-1-a>
+        <level-1-b></level-1-b>
       </fieldset>
     </fieldset>
   `
@@ -23,7 +26,7 @@ import { NgModule, Component } from "@angular/core";
 export class AppComponent {}
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [ModuleA, ModuleB],
   declarations: [AppComponent],
   exports: [AppComponent]
 })
