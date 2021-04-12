@@ -9,7 +9,7 @@ import {
 } from "@angular/core";
 
 @Component({
-  selector: "level-4",
+  selector: "app-root",
   template: `
     <fieldset>
       <legend>Level 4: Renderless components</legend>

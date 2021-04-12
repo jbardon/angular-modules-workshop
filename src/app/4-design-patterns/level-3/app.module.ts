@@ -4,15 +4,13 @@ import {
   Component,
   Directive,
   ElementRef,
-  ContentChild,
   Renderer2,
   AfterViewInit,
   OnDestroy,
-  HostListener
 } from "@angular/core";
 
 @Component({
-  selector: "level-2",
+  selector: "app-root",
   template: `
     <fieldset>
       <legend>Level 3: Replace directive with component</legend>

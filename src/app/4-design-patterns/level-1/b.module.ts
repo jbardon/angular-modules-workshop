@@ -12,11 +12,11 @@ export const COMPONENT_B_REF = new InjectionToken<ComponentB>(
 );
 
 @Component({
-  selector: "level-1-b",
+  selector: "component-b",
   template: `
     <fieldset>
       <legend>ComponentB</legend>
-      <level-1-b-1></level-1-b-1>
+      <child-component-b></child-component-b>
     </fieldset>
   `,
   providers: [
@@ -31,7 +31,7 @@ export class ComponentB {
 }
 
 @Component({
-  selector: "level-1-b-1",
+  selector: "child-component-b",
   template: `
     <fieldset>
       <legend>ChildComponentB</legend>

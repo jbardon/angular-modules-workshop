@@ -8,7 +8,7 @@ import {
 } from "@angular/core";
 
 @Component({
-  selector: "level-2",
+  selector: "app-root",
   template: `
     <fieldset>
       <legend>Level 2: Directive as selector</legend>
@@ -23,10 +23,10 @@ import {
       <fieldset>
         <legend>AppModule</legend>
 
-        <level-2-a>
+        <component-a>
           <!-- Can't use template reference variable here -->
           <span directiveA>ComponentA content</span>
-        </level-2-a>
+        </component-a>
       </fieldset>
     </fieldset>
   `
@@ -45,7 +45,7 @@ export class DirectiveA {
 }
 
 @Component({
-  selector: "level-2-a",
+  selector: "component-a",
   template: `
     <fieldset>
       <legend>ComponentA</legend>

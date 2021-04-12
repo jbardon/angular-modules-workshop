@@ -10,7 +10,7 @@ import { ModuleLoadingService } from "../../module-loading.service";
 import { LIB_CONFIG, LibraryModule, LibraryService } from "./library.module";
 
 @Component({
-  selector: "level-3",
+  selector: "app-root",
   template: `
     <fieldset>
       <legend>Level 3: Issue without forRoot/forChild</legend>

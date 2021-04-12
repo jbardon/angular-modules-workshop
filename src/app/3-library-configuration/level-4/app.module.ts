@@ -10,7 +10,7 @@ import { ModuleLoadingService } from "../../module-loading.service";
 import { LibraryModule, LibraryService } from "./library.module";
 
 @Component({
-  selector: "level-4",
+  selector: "app-root",
   template: `
     <fieldset>
       <legend>Level 4: Provide once with forRoot</legend>

@@ -3,7 +3,7 @@ import { NgModule, Component } from "@angular/core";
 import { LibraryModule } from "./library.module";
 
 @Component({
-  selector: "level-2",
+  selector: "app-root",
   template: `
     <fieldset>
       <legend>Level 2: forRoot syntax to provide configuration</legend>

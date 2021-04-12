@@ -2,11 +2,11 @@ import { CommonModule } from "@angular/common";
 import { Component, NgModule, Host, Optional } from "@angular/core";
 
 @Component({
-  selector: "level-1-a",
+  selector: "component-a",
   template: `
     <fieldset>
       <legend>ComponentA</legend>
-      <level-1-a-1></level-1-a-1>
+      <child-component-a></child-component-a>
     </fieldset>
   `
 })
@@ -15,12 +15,12 @@ export class ComponentA {
 }
 
 @Component({
-  selector: "level-1-a-1",
+  selector: "child-component-a",
   template: `
     <fieldset>
       <legend>ChildComponentA</legend>
       <p>componentA.name: {{ componentA.name | json }}</p>
-      <level-1-a-1-1></level-1-a-1-1>
+      <baby-component-a></baby-component-a>
     </fieldset>
   `
 })
@@ -29,7 +29,7 @@ export class ChildComponentA {
 }
 
 @Component({
-  selector: "level-1-a-1-1",
+  selector: "baby-component-a",
   template: `
     <fieldset>
       <legend>BabyComponentA</legend>

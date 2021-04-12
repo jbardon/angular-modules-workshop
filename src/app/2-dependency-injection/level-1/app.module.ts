@@ -3,7 +3,7 @@ import { NgModule, Component } from "@angular/core";
 import { ServiceA, ServiceB, ServiceC, ServiceD, ServiceE } from "./services";
 
 @Component({
-  selector: "level-1",
+  selector: "app-root",
   template: `
     <fieldset>
       <legend>Level 1: Inject a simple service</legend>

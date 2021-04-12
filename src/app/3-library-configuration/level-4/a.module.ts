@@ -3,7 +3,7 @@ import { Component, NgModule } from "@angular/core";
 import { LibraryModule, LibraryService } from "./library.module";
 
 @Component({
-  selector: "level-4-a",
+  selector: "component-a",
   template: `
     <fieldset>
       <legend>ModuleA (lazy loaded)</legend>

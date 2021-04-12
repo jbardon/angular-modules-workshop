@@ -3,7 +3,7 @@ import { NgModule, Component, Inject } from "@angular/core";
 import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
 
 @Component({
-  selector: "level-3",
+  selector: "app-root",
   template: `
     <fieldset>
       <legend>Level 3: Providers at component level (ElementInjector)</legend>

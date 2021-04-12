@@ -3,7 +3,7 @@ import { NgModule, Component } from "@angular/core";
 import { LibraryConfig, LibraryModule } from "./library.module";
 
 @Component({
-  selector: "level-1",
+  selector: "app-root",
   template: `
     <fieldset>
       <legend>Level 1: Provide config from app</legend>

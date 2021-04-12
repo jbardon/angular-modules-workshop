@@ -3,7 +3,7 @@ import { Component, Inject, NgModule } from "@angular/core";
 import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
 
 @Component({
-  selector: "level-5-a",
+  selector: "component-a",
   template: `
     <fieldset>
       <legend>ModuleA (lazy loaded)</legend>

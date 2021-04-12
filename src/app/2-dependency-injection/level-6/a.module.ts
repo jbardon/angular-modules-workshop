@@ -23,7 +23,7 @@ import { TOKEN_C } from "./tokens";
 console.log("[Level 6] ModuleA, TOKEN_A=", TOKEN_A);
 
 @Component({
-  selector: "level-6-a",
+  selector: "component-a",
   template: `
     <fieldset>
       <legend>Level 6: Circular imports</legend>

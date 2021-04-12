@@ -3,7 +3,7 @@ import { ModuleA } from "./a.module";
 import { ModuleB } from "./b.module";
 
 @Component({
-  selector: "level-1",
+  selector: "app-root",
   template: `
     <fieldset>
       <legend>Level 1: Access parent instance</legend>
@@ -16,8 +16,8 @@ import { ModuleB } from "./b.module";
       </ul>
       <hr />
 
-      <level-1-a></level-1-a><br />
-      <level-1-b></level-1-b>
+      <component-a></component-a><br />
+      <component-b></component-b>
     </fieldset>
   `
 })

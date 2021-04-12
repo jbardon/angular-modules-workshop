@@ -5,7 +5,7 @@ import { ModuleB } from "./b.module";
 import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
 
 @Component({
-  selector: "level-4",
+  selector: "app-root",
   template: `
     <fieldset>
       <legend>
@@ -40,8 +40,8 @@ import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
         <p>TOKEN_B: {{ tokenB | json }}</p>
         <p>TOKEN_C: {{ tokenC | json }}</p>
 
-        <level-4a></level-4a>
-        <level-4b></level-4b>
+        <component-a></component-a>
+        <component-b></component-b>
       </fieldset>
     </fieldset>
   `

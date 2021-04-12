@@ -9,7 +9,7 @@ import {
 import { TOKEN_A, TOKEN_B, TOKEN_C, TOKEN_D } from "./tokens";
 
 @Component({
-  selector: "level-7",
+  selector: "app-root",
   template: `
     <fieldset>
       <legend>Level 7: Providers with dependencies and options</legend>

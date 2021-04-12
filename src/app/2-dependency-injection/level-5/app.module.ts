@@ -12,7 +12,7 @@ import { ModuleLoadingService } from "../../module-loading.service";
 import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
 
 @Component({
-  selector: "level-5",
+  selector: "app-root",
   template: `
     <fieldset>
       <legend>Level 5: Lazy loaded modules</legend>
