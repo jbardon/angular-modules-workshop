@@ -3,15 +3,12 @@ import {
   NgModule,
   Component,
   Directive,
-  TemplateRef,
-  ViewContainerRef,
-  OnInit,
   Injectable,
   ElementRef,
   Output
 } from "@angular/core";
 import { fromEvent, Observable } from "rxjs";
-import { bufferCount, mapTo, windowCount } from "rxjs/operators";
+import { bufferCount, mapTo } from "rxjs/operators";
 
 @Component({
   selector: "app-root",
