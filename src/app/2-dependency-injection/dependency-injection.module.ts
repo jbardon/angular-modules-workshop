@@ -11,45 +11,40 @@ import * as Level7 from "./level-7/app.module";
 
 export const dependencyInjectionModuleRoutes: Routes = [
   {
-    path: "",
-    children: [
-      {
-        path: "0",
-        component: Level0.AppComponent
-      },
-      {
-        path: "1",
-        component: Level1.AppComponent
-      },
-      {
-        path: "2",
-        component: Level2.AppComponent
-      },
-      {
-        path: "3",
-        component: Level3.AppComponent
-      },
-      {
-        path: "4",
-        component: Level4.AppComponent
-      },
-      {
-        path: "5",
-        component: Level5.AppComponent
-      },
-      {
-        path: "6",
-        component: Level6.AppComponent
-      },
-      {
-        path: "7",
-        component: Level7.AppComponent
-      },
-      {
-        path: "**",
-        redirectTo: "0"
-      }
-    ]
+    path: "0",
+    component: Level0.AppComponent
+  },
+  {
+    path: "1",
+    component: Level1.AppComponent
+  },
+  {
+    path: "2",
+    component: Level2.AppComponent
+  },
+  {
+    path: "3",
+    component: Level3.AppComponent
+  },
+  {
+    path: "4",
+    component: Level4.AppComponent
+  },
+  {
+    path: "5",
+    component: Level5.AppComponent
+  },
+  {
+    path: "6",
+    component: Level6.AppComponent
+  },
+  {
+    path: "7",
+    component: Level7.AppComponent
+  },
+  {
+    path: "**",
+    redirectTo: "0"
   }
 ];
 

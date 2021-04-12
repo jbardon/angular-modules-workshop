@@ -4,6 +4,7 @@ import * as Level1 from "./level-1/app.module";
 import * as Level2 from "./level-2/app.module";
 import * as Level3 from "./level-3/app.module";
 import * as Level4 from "./level-4/app.module";
+import * as Level5 from "./level-5/app.module";
 
 export const designPatternsModuleRoutes: Routes = [
   {
@@ -23,6 +24,10 @@ export const designPatternsModuleRoutes: Routes = [
     component: Level4.AppComponent
   },
   {
+    path: "5",
+    component: Level5.AppComponent
+  },
+  {
     path: "**",
     redirectTo: "1"
   }
@@ -33,6 +38,8 @@ export const designPatternsModuleRoutes: Routes = [
     Level1.AppModule,
     Level2.AppModule,
     Level3.AppModule,
+    Level4.AppModule,
+    Level5.AppModule
   ]
 })
 export class DesignPatternsModule {}
