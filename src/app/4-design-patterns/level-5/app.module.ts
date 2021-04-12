@@ -5,10 +5,11 @@ import {
   Directive,
   Injectable,
   ElementRef,
-  Output
+  Output,
+  HostBinding
 } from "@angular/core";
 import { fromEvent, Observable } from "rxjs";
-import { bufferCount, mapTo } from "rxjs/operators";
+import { bufferCount, mapTo, scan, tap } from "rxjs/operators";
 
 @Component({
   selector: "app-root",
@@ -23,7 +24,9 @@ import { bufferCount, mapTo } from "rxjs/operators";
         </li>
       </ul>
       <hr />
-      <div (directiveA)="directiveAEvent()">Click 3 times</div>
+      <div (directiveA)="directiveAEvent()">
+        Click 3 times
+      </div>
     </fieldset>
   `
 })
@@ -47,11 +50,27 @@ export class ServiceA extends Observable<boolean> {
 
 @Directive({
   selector: "[directiveA]",
-  providers: [ServiceA]
+  providers: [ServiceA],
+  host: {
+    // "style.fontSize.px": "test$"
+  }
 })
 export class DirectiveA {
   @Output() directiveA = this.serviceA;
-  constructor(private serviceA: ServiceA) {}
+  test$ = fromEvent(this.elementRef.nativeElement, "click").pipe(
+    scan(count => {
+      const next = count + 10;
+      return next > 30 ? 10 : next;
+    }, 10),
+    tap(a => console.log("coucou", a))
+  );
+
+  constructor(private serviceA: ServiceA, private elementRef: ElementRef) {
+    this.test$.subscribe(a => (this.test = a));
+  }
+
+  @HostBinding("style.fontSize.px")
+  test = 10;
 }
 
 @NgModule({
