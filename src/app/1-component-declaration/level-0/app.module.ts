@@ -2,7 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule, Component } from "@angular/core";
 
 @Component({
-  selector: "level-0",
+  selector: "app-root",
   template: `
     <fieldset>
       <legend>Level 0: Declare and use a component</legend>

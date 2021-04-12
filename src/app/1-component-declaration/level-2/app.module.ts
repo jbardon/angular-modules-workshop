@@ -5,7 +5,7 @@ import { ModuleB } from "./b.module";
 import { HelloModule } from "./hello.module";
 
 @Component({
-  selector: "level-2",
+  selector: "app-root",
   template: `
     <fieldset>
       <legend>Level 2: Don't think about inheritence</legend>
@@ -25,8 +25,8 @@ import { HelloModule } from "./hello.module";
         <hello></hello><br />
         <app-hello></app-hello>
 
-        <level-2a></level-2a>
-        <level-2b></level-2b>
+        <component-a></component-a>
+        <component-b></component-b>
       </fieldset>
     </fieldset>
   `

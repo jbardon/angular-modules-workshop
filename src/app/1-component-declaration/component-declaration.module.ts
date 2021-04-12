@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes } from "@angular/router";
 import * as Level0 from "./level-0/app.module";
 import * as Level1 from "./level-1/app.module";
-import * as Level2 from "./level-2/level-2.module";
+import * as Level2 from "./level-2/app.module";
 
 export const componentDeclarationModuleRoutes: Routes = [
   {

@@ -8,7 +8,7 @@ import {
 } from "@angular/core";
 
 @Component({
-  selector: "level-0",
+  selector: "app-root",
   template: `
     <fieldset>
       <legend>Level 0: Informations about DI</legend>

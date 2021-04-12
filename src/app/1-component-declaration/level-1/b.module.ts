@@ -7,7 +7,7 @@ import { Component, NgModule } from "@angular/core";
 export class HelloComponentB {}
 
 @Component({
-  selector: "level-1b",
+  selector: "component-b",
   template: `
     <fieldset>
       <legend>ModuleB</legend>

@@ -2,7 +2,7 @@ import { Component, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { HelloModule } from "./hello.module";
 
 @Component({
-  selector: "level-2b",
+  selector: "component-b",
   template: `
     <fieldset>
       <legend>ModuleB</legend>
