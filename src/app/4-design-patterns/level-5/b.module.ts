@@ -5,7 +5,7 @@ import { Directive, EventEmitter, NgModule, Output } from "@angular/core";
   host: {
     "[style.fontSize.px]": "fontSize",
     "[style.userSelect]": "'none'",
-    "(click)": "click($event)"
+    "(click)": "click($event.target)"
   }
 })
 export class DirectiveB {
