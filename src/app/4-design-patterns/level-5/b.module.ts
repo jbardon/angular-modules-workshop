@@ -2,6 +2,7 @@ import { Directive, EventEmitter, NgModule, Output } from "@angular/core";
 
 @Directive({
   selector: "[directiveB]",
+  exportAs: "instanceB",
   host: {
     "[style.fontSize.px]": "fontSize",
     "[style.userSelect]": "'none'",
@@ -9,7 +10,7 @@ import { Directive, EventEmitter, NgModule, Output } from "@angular/core";
   }
 })
 export class DirectiveB {
-  @Output() directiveB = new EventEmitter<any>();
+  @Output() countChanged = new EventEmitter<any>();
 
   fontSize = 10;
   count = 1;
@@ -18,7 +19,7 @@ export class DirectiveB {
     this.count++;
     this.fontSize = this.count * 10;
 
-    this.directiveB.emit({ text: target.textContent, count: this.count });
+    this.countChanged.emit({ text: target.textContent, count: this.count });
   }
 }
 

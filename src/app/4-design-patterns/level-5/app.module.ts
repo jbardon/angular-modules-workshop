@@ -19,9 +19,30 @@ import { ModuleC, DirectiveC } from "./c.module";
         </li>
       </ul>
       <hr />
-      <div (directiveA)="directiveEvent($event)">DirectiveA</div>
-      <div (directiveB)="directiveEvent($event)">DirectiveB</div>
-      <div (directiveC)="directiveEvent($event)">DirectiveC</div>
+      <div
+        #directiveA="instanceA"
+        directiveA
+        (countChanged)="directiveEvent($event)"
+      >
+        DirectiveA ({{ directiveA.count }})
+      </div>
+
+      <div
+        #directiveB="instanceB"
+        directiveB
+        (countChanged)="directiveEvent($event)"
+      >
+        DirectiveB ({{ directiveB.count }})
+      </div>
+
+      <div
+        #directiveC="instanceC"
+        directiveC
+        (countChanged)="directiveEvent($event)"
+      >
+        DirectiveC ({{ (directiveC.countChanged | async).count }})
+      </div>
+
       <div>allClicked: {{ allClicked }}</div>
     </fieldset>
   `
@@ -35,9 +56,9 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     zip(
-      this.directiveA.directiveA,
-      this.directiveB.directiveB,
-      this.directiveC.directiveC
+      this.directiveA.countChanged,
+      this.directiveB.countChanged,
+      this.directiveC.countChanged
     )
       .pipe(
         tap(() => {

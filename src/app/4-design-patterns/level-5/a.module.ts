@@ -8,10 +8,11 @@ import {
 } from "@angular/core";
 
 @Directive({
-  selector: "[directiveA]"
+  selector: "[directiveA]",
+  exportAs: "instanceA"
 })
 export class DirectiveA {
-  @Output() directiveA = new EventEmitter<any>();
+  @Output() countChanged = new EventEmitter<any>();
 
   @HostBinding("style.fontSize.px") fontSize = 10;
   @HostBinding("style.userSelect") userSelect = "none";
@@ -23,7 +24,7 @@ export class DirectiveA {
     this.count++;
     this.fontSize = this.count * 10;
 
-    this.directiveA.emit({ text: target.textContent, count: this.count });
+    this.countChanged.emit({ text: target.textContent, count: this.count });
   }
 }
 
