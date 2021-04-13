@@ -36,15 +36,19 @@ export class AppComponent {
   }
 }
 
+// host, HostBinding, HostAttribute
+// Service with DI ElementRef, ChangeDetector
+// Observable- based service
+// Outputs are subjects
 @Injectable()
-export class ServiceA extends Observable<boolean> {
+export class ServiceA extends Observable<number> {
   constructor(elementRef: ElementRef) {
-    const tripleClick$ = fromEvent(elementRef.nativeElement, "click").pipe(
-      bufferCount(3),
-      mapTo(true)
+    // Each click: 1 ,2, 3 then back to 1
+    const cappedClick$ = fromEvent(elementRef.nativeElement, "click").pipe(
+      scan(count => (count % 3) + 1, 0)
     );
 
-    super(subscriber => tripleClick$.subscribe(subscriber));
+    super(subscriber => cappedClick$.subscribe(subscriber));
   }
 }
 
@@ -52,25 +56,26 @@ export class ServiceA extends Observable<boolean> {
   selector: "[directiveA]",
   providers: [ServiceA],
   host: {
-    // "style.fontSize.px": "test$"
+    "[style.userSelect]": "'none'"
   }
 })
 export class DirectiveA {
-  @Output() directiveA = this.serviceA;
-  test$ = fromEvent(this.elementRef.nativeElement, "click").pipe(
-    scan(count => {
-      const next = count + 10;
-      return next > 30 ? 10 : next;
-    }, 10),
-    tap(a => console.log("coucou", a))
+  @Output() directiveA = this.serviceA.pipe(
+    bufferCount(3),
+    mapTo(true)
   );
 
-  constructor(private serviceA: ServiceA, private elementRef: ElementRef) {
-    this.test$.subscribe(a => (this.test = a));
-  }
+  @Output() click = this.serviceA;
 
   @HostBinding("style.fontSize.px")
-  test = 10;
+  fontSize = 10;
+
+  constructor(private serviceA: ServiceA, private elementRef: ElementRef) {
+    this.click.subscribe(a => {
+      console.log(a);
+      this.fontSize = a * 15;
+    });
+  }
 }
 
 @NgModule({
