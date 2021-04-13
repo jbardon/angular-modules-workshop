@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule, Component, ViewChild, AfterViewInit } from "@angular/core";
 import { zip } from "rxjs";
+import { tap } from "rxjs/operators";
 import { ModuleA, DirectiveA } from "./a.module";
 import { ModuleB, DirectiveB } from "./b.module";
 import { ModuleC, DirectiveC } from "./c.module";
@@ -21,6 +22,7 @@ import { ModuleC, DirectiveC } from "./c.module";
       <div (directiveA)="directiveEvent($event)">DirectiveA</div>
       <div (directiveB)="directiveEvent($event)">DirectiveB</div>
       <div (directiveC)="directiveEvent($event)">DirectiveC</div>
+      <div>allClicked: {{ allClicked }}</div>
     </fieldset>
   `
 })
@@ -29,12 +31,21 @@ export class AppComponent implements AfterViewInit {
   @ViewChild(DirectiveB) directiveB;
   @ViewChild(DirectiveC) directiveC;
 
+  allClicked = 0;
+
   ngAfterViewInit() {
     zip(
       this.directiveA.directiveA,
       this.directiveB.directiveB,
       this.directiveC.directiveC
-    ).subscribe(() => console.log("[Level5] All directives clicked"));
+    )
+      .pipe(
+        tap(() => {
+          console.log("[Level5] All directives clicked");
+          this.allClicked++;
+        })
+      )
+      .subscribe();
   }
 
   directiveEvent(event) {
