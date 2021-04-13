@@ -1,15 +1,9 @@
 import { CommonModule } from "@angular/common";
-import {
-  NgModule,
-  Component,
-  Directive,
-  Injectable,
-  ElementRef,
-  Output,
-  HostBinding
-} from "@angular/core";
-import { fromEvent, Observable } from "rxjs";
-import { bufferCount, mapTo, scan, tap } from "rxjs/operators";
+import { NgModule, Component, ViewChild, AfterViewInit } from "@angular/core";
+import { zip } from "rxjs";
+import { ModuleA, DirectiveA } from "./a.module";
+import { ModuleB, DirectiveB } from "./b.module";
+import { ModuleC, DirectiveC } from "./c.module";
 
 @Component({
   selector: "app-root",
@@ -24,63 +18,33 @@ import { bufferCount, mapTo, scan, tap } from "rxjs/operators";
         </li>
       </ul>
       <hr />
-      <div (directiveA)="directiveAEvent()">
-        Click 3 times
-      </div>
+      <div (directiveA)="directiveEvent($event)">DirectiveA</div>
+      <div (directiveB)="directiveEvent($event)">DirectiveB</div>
+      <div (directiveC)="directiveEvent($event)">DirectiveC</div>
     </fieldset>
   `
 })
-export class AppComponent {
-  directiveAEvent() {
-    console.log("DirectiveA event");
+export class AppComponent implements AfterViewInit {
+  @ViewChild(DirectiveA) directiveA;
+  @ViewChild(DirectiveB) directiveB;
+  @ViewChild(DirectiveC) directiveC;
+
+  ngAfterViewInit() {
+    zip(
+      this.directiveA.directiveA,
+      this.directiveB.directiveB,
+      this.directiveC.directiveC
+    ).subscribe(() => console.log("[Level5] All directives clicked"));
   }
-}
 
-// host, HostBinding, HostAttribute
-// Service with DI ElementRef, ChangeDetector
-// Observable- based service
-// Outputs are subjects
-@Injectable()
-export class ServiceA extends Observable<number> {
-  constructor(elementRef: ElementRef) {
-    // Each click: 1 ,2, 3 then back to 1
-    const cappedClick$ = fromEvent(elementRef.nativeElement, "click").pipe(
-      scan(count => (count % 3) + 1, 0)
-    );
-
-    super(subscriber => cappedClick$.subscribe(subscriber));
-  }
-}
-
-@Directive({
-  selector: "[directiveA]",
-  providers: [ServiceA],
-  host: {
-    "[style.userSelect]": "'none'"
-  }
-})
-export class DirectiveA {
-  @Output() directiveA = this.serviceA.pipe(
-    bufferCount(3),
-    mapTo(true)
-  );
-
-  @Output() click = this.serviceA;
-
-  @HostBinding("style.fontSize.px")
-  fontSize = 10;
-
-  constructor(private serviceA: ServiceA, private elementRef: ElementRef) {
-    this.click.subscribe(a => {
-      console.log(a);
-      this.fontSize = a * 15;
-    });
+  directiveEvent(event) {
+    console.log(`[Level5] ${event.text}: ${event.count}`);
   }
 }
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [AppComponent, DirectiveA],
+  imports: [CommonModule, ModuleA, ModuleB, ModuleC],
+  declarations: [AppComponent],
   exports: [AppComponent]
 })
 export class AppModule {}
