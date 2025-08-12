@@ -19,7 +19,7 @@ import { LibraryConfig, LibraryModule } from "./library.module";
       <hr />
       <fieldset>
         <legend>AppModule</legend>
-        <lib-component></lib-component>
+        <lib-component />
       </fieldset>
     </fieldset>
   `,

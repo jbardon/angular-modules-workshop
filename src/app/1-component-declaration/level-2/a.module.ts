@@ -10,13 +10,13 @@ import { Component, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
         AppModule can use <hello> but ComponentA cannot,
         there is no inheritence for component module imports between modules
       -->
-      <hello></hello>
+      <hello />
 
       <!-- 
         Not accessible because neither declared not imported
         in this component module
        -->
-      <app-hello></app-hello>
+      <app-hello />
     </fieldset>
   `,
     standalone: false

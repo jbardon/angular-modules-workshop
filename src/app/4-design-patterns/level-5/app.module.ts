@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { NgModule, Component, ViewChild, AfterViewInit } from "@angular/core";
+import { NgModule, Component, AfterViewInit, viewChild } from "@angular/core";
 import { zip } from "rxjs";
 import { tap } from "rxjs/operators";
 import { ModuleA, DirectiveA } from "./a.module";
@@ -49,17 +49,17 @@ import { ModuleC, DirectiveC } from "./c.module";
   standalone: false
 })
 export class AppComponent implements AfterViewInit {
-  @ViewChild(DirectiveA) directiveA;
-  @ViewChild(DirectiveB) directiveB;
-  @ViewChild(DirectiveC) directiveC;
+  readonly directiveA = viewChild(DirectiveA);
+  readonly directiveB = viewChild(DirectiveB);
+  readonly directiveC = viewChild(DirectiveC);
 
   allClicked = 0;
 
   ngAfterViewInit() {
     zip(
-      this.directiveA.countChanged,
-      this.directiveB.countChanged,
-      this.directiveC.countChanged
+      this.directiveA().countChanged,
+      this.directiveB().countChanged,
+      this.directiveC().countChanged
     )
       .pipe(
         tap(() => {

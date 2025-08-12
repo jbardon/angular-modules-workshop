@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { NgModule, Component, AfterViewInit, ViewContainerRef, ViewChild, inject } from "@angular/core";
+import { NgModule, Component, AfterViewInit, ViewContainerRef, inject, viewChild } from "@angular/core";
 import { ModuleLoadingService } from "../../module-loading.service";
 import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
 
@@ -37,7 +37,7 @@ import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
         <p>TOKEN_B: {{ tokenB | json }}</p>
         <p>TOKEN_C: {{ tokenC | json }}</p>
 
-        <ng-container #componentA></ng-container>
+        <ng-container #componentA />
       </fieldset>
     </fieldset>
   `,
@@ -50,11 +50,10 @@ export class AppComponent implements AfterViewInit {
   tokenC = inject(TOKEN_C, { optional: true });
   private moduleLoaderService = inject(ModuleLoadingService);
 
-  @ViewChild("componentA", { read: ViewContainerRef })
-  container: ViewContainerRef;
+  readonly container = viewChild("componentA", { read: ViewContainerRef });
 
   ngAfterViewInit() {
-    this.moduleLoaderService.lazyLoad(import("./a.module"), this.container);
+    this.moduleLoaderService.lazyLoad(import("./a.module"), this.container());
   }
 }
 

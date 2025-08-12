@@ -33,7 +33,7 @@ export class AppComponent {}
 
 @Component({
   selector: "componentA",
-  template: "<ng-content></ng-content>",
+  template: "<ng-content />",
   standalone: false
 })
 export class ComponentA {

@@ -26,11 +26,11 @@ import { ModuleB } from "./b.module";
       <fieldset>
         <legend>AppModule</legend>
 
-        <hello-a></hello-a>
-        <hello-b></hello-b>
+        <hello-a />
+        <hello-b />
 
-        <component-a></component-a>
-        <component-b></component-b>
+        <component-a />
+        <component-b />
       </fieldset>
     </fieldset>
   `,

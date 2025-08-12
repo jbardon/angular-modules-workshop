@@ -40,8 +40,8 @@ import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
         <p>TOKEN_B: {{ tokenB | json }}</p>
         <p>TOKEN_C: {{ tokenC | json }}</p>
 
-        <component-a></component-a>
-        <component-b></component-b>
+        <component-a />
+        <component-b />
       </fieldset>
     </fieldset>
   `,

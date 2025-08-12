@@ -16,8 +16,8 @@ import { ModuleB } from "./b.module";
       </ul>
       <hr />
 
-      <component-a></component-a><br />
-      <component-b></component-b>
+      <component-a /><br />
+      <component-b />
     </fieldset>
   `,
   standalone: false

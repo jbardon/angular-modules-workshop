@@ -6,7 +6,7 @@ import { Component, NgModule, inject } from "@angular/core";
   template: `
     <fieldset>
       <legend>ComponentA</legend>
-      <child-component-a></child-component-a>
+      <child-component-a />
     </fieldset>
   `,
   standalone: false
@@ -21,7 +21,7 @@ export class ComponentA {
     <fieldset>
       <legend>ChildComponentA</legend>
       <p>componentA.name: {{ componentA.name | json }}</p>
-      <baby-component-a></baby-component-a>
+      <baby-component-a />
     </fieldset>
   `,
   standalone: false

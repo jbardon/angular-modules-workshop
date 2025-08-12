@@ -22,7 +22,7 @@ import { NgModule, Component } from "@angular/core";
       <hr />
       <fieldset>
         <legend>AppModule</legend>
-        <hello></hello>
+        <hello />
       </fieldset>
     </fieldset>
   `,

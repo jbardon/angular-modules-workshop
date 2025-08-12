@@ -12,7 +12,7 @@ export class HelloComponentA {}
   template: `
     <fieldset>
       <legend>ModuleA</legend>
-      <hello-a></hello-a>
+      <hello-a />
     </fieldset>
   `,
     standalone: false

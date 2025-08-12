@@ -35,7 +35,7 @@ Notes:
             }
           </div>
         </nav>
-        <router-outlet></router-outlet>
+        <router-outlet />
     `,
     styles: [
         `

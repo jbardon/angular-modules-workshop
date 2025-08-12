@@ -10,7 +10,7 @@ export const COMPONENT_B_REF = new InjectionToken<ComponentB>(
   template: `
     <fieldset>
       <legend>ComponentB</legend>
-      <child-component-b></child-component-b>
+      <child-component-b />
     </fieldset>
   `,
   standalone: false,

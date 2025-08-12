@@ -50,7 +50,7 @@ export class DirectiveA implements AfterViewInit, OnDestroy {
 @Component({
   selector: "[componentA]",
   template: `
-    <ng-content></ng-content>
+    <ng-content />
     <cite>jbardon</cite>
   `,
   standalone: false

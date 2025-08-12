@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { NgModule, Component, ViewChild, ViewContainerRef, AfterViewInit, inject } from "@angular/core";
+import { NgModule, Component, ViewContainerRef, AfterViewInit, inject, viewChild } from "@angular/core";
 import { ModuleLoadingService } from "../../module-loading.service";
 import { LibraryModule, LibraryService } from "./library.module";
 
@@ -26,7 +26,7 @@ import { LibraryModule, LibraryService } from "./library.module";
         <legend>AppModule</legend>
         <p>libraryService.config: {{ libraryService.config }}</p>
 
-        <ng-container #componentA></ng-container>
+        <ng-container #componentA />
       </fieldset>
     </fieldset>
   `,
@@ -37,12 +37,12 @@ export class AppComponent implements AfterViewInit {
   libraryService = inject(LibraryService);
   private moduleLoadingService = inject(ModuleLoadingService);
 
-  @ViewChild("componentA", { read: ViewContainerRef }) container: ViewContainerRef;
+  readonly container = viewChild("componentA", { read: ViewContainerRef });
 
   ngAfterViewInit() {
     this.moduleLoadingService.lazyLoad(
       import("./a.module"),
-      this.container
+      this.container()
     );
   }
 }

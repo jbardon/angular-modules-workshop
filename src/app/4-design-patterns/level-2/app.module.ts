@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { NgModule, Component, Directive, ElementRef, ContentChild, inject } from "@angular/core";
+import { NgModule, Component, Directive, ElementRef, inject, contentChild } from "@angular/core";
 
 @Component({
   selector: "app-root",
@@ -45,13 +45,13 @@ export class DirectiveA {
   template: `
     <fieldset>
       <legend>ComponentA</legend>
-      <p>directiveA.contentText: {{ directiveA.contentText | json }}</p>
+      <p>directiveA.contentText: {{ directiveA().contentText | json }}</p>
     </fieldset>
   `,
   standalone: false,
 })
 export class ComponentA {
-  @ContentChild(DirectiveA) directiveA: DirectiveA;
+  readonly directiveA = contentChild(DirectiveA);
 }
 
 @NgModule({

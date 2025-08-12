@@ -22,11 +22,11 @@ import { HelloModule } from "./hello.module";
       <hr />
       <fieldset>
         <legend>AppModule</legend>
-        <hello></hello><br />
-        <app-hello></app-hello>
+        <hello /><br />
+        <app-hello />
 
-        <component-a></component-a>
-        <component-b></component-b>
+        <component-a />
+        <component-b />
       </fieldset>
     </fieldset>
   `,
