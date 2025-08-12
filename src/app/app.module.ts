@@ -42,11 +42,11 @@ Notes:
         color: black;
         font-weight: bold;
         text-decoration: none;
-        // pointer-events: none;
+        /* pointer-events: none; */
         cursor: default;
       }
     `
-  ]
+  ],
 })
 export class AppComponent {
   courses = [
