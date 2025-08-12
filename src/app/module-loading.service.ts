@@ -1,11 +1,4 @@
-import {
-  Compiler,
-  ComponentFactoryResolver,
-  Injectable,
-  Injector,
-  NgModuleRef,
-  ViewContainerRef
-} from "@angular/core";
+import { Compiler, ComponentFactoryResolver, Injectable, Injector, NgModuleRef, ViewContainerRef, inject } from "@angular/core";
 
 /*
   Usage: 
@@ -33,10 +26,8 @@ import {
 */
 @Injectable()
 export class ModuleLoadingService {
-  constructor(
-    private compiler: Compiler,
-    private injector: Injector,
-  ) {}
+  private compiler = inject(Compiler);
+  private injector = inject(Injector);
 
   // Manual lazy loading: same behavior as Angular router with loadChildren
   lazyLoad(moduleImport: Promise<any>, target: ViewContainerRef) {

@@ -1,13 +1,5 @@
 import { CommonModule } from "@angular/common";
-import {
-  NgModule,
-  Component,
-  Directive,
-  Injectable,
-  ElementRef,
-  Output,
-  HostBinding
-} from "@angular/core";
+import { NgModule, Component, Directive, Injectable, ElementRef, Output, HostBinding, inject } from "@angular/core";
 import { fromEvent, Observable } from "rxjs";
 import { bufferCount, mapTo, scan } from "rxjs/operators";
 
@@ -43,7 +35,9 @@ export class AppComponent {
 // Outputs are subjects
 @Injectable()
 export class ServiceA extends Observable<number> {
-  constructor(elementRef: ElementRef) {
+  constructor() {
+    const elementRef = inject(ElementRef);
+
     // Each click: 1 ,2, 3 then back to 1
     const cappedClick$ = fromEvent(elementRef.nativeElement, "click").pipe(
       scan(count => (count % 3) + 1, 0)
@@ -62,6 +56,8 @@ export class ServiceA extends Observable<number> {
   standalone: false
 })
 export class DirectiveA {
+  private serviceA = inject(ServiceA);
+
   @Output() directiveA = this.serviceA.pipe(
     bufferCount(3),
     mapTo(true)
@@ -72,7 +68,7 @@ export class DirectiveA {
   @HostBinding("style.fontSize.px")
   fontSize = 10;
 
-  constructor(private serviceA: ServiceA) {
+  constructor() {
     this.click.subscribe(a => {
       console.log(a);
       this.fontSize = a * 15;

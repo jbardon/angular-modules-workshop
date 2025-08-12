@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, NgModule, Inject } from "@angular/core";
+import { Component, NgModule, inject } from "@angular/core";
 import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
 
 @Component({
@@ -16,11 +16,9 @@ import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
     standalone: false
 })
 export class ComponentB {
-  constructor(
-    @Inject(TOKEN_A) public tokenA,
-    @Inject(TOKEN_B) public tokenB,
-    @Inject(TOKEN_C) public tokenC
-  ) {}
+  tokenA = inject(TOKEN_A);
+  tokenB = inject(TOKEN_B);
+  tokenC = inject(TOKEN_C);
 }
 
 @NgModule({

@@ -1,11 +1,5 @@
 import { CommonModule } from "@angular/common";
-import {
-  Component,
-  forwardRef,
-  Inject,
-  NgModule,
-  Optional
-} from "@angular/core";
+import { Component, forwardRef, NgModule, inject } from "@angular/core";
 import { TOKEN_A, TOKEN_B } from "./app.module";
 import { TOKEN_C } from "./tokens";
 
@@ -43,11 +37,9 @@ console.log("[Level 6] ModuleA, TOKEN_A=", TOKEN_A);
     standalone: false
 })
 export class ComponentA {
-  constructor(
-    @Inject(TOKEN_A) @Optional() public tokenA,
-    @Inject(TOKEN_B) public tokenB,
-    @Inject(TOKEN_C) public tokenC
-  ) {}
+  tokenA = inject(TOKEN_A, { optional: true });
+  tokenB = inject(TOKEN_B);
+  tokenC = inject(TOKEN_C);
 }
 
 @NgModule({

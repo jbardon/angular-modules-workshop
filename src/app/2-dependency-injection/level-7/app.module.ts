@@ -1,11 +1,5 @@
 import { CommonModule } from "@angular/common";
-import {
-  NgModule,
-  Component,
-  Inject,
-  inject,
-  InjectionToken
-} from "@angular/core";
+import { NgModule, Component, inject, InjectionToken } from "@angular/core";
 import { TOKEN_A, TOKEN_B, TOKEN_C, TOKEN_D } from "./tokens";
 
 @Component({
@@ -33,13 +27,11 @@ import { TOKEN_A, TOKEN_B, TOKEN_C, TOKEN_D } from "./tokens";
     standalone: false
 })
 export class AppComponent {
-  constructor(
-    @Inject(TOKEN_A) public tokenA,
-    @Inject(TOKEN_B) public tokenB,
-    @Inject(TOKEN_C) public tokenC,
-    @Inject(TOKEN_D) public tokenD,
-    @Inject(TOKEN_E) public tokenE
-  ) {}
+  tokenA = inject(TOKEN_A);
+  tokenB = inject(TOKEN_B);
+  tokenC = inject(TOKEN_C);
+  tokenD = inject(TOKEN_D);
+  tokenE = inject(TOKEN_E);
 }
 
 @NgModule({

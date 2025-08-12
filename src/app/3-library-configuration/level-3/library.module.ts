@@ -1,11 +1,5 @@
 import { CommonModule } from "@angular/common";
-import {
-  InjectionToken,
-  NgModule,
-  Inject,
-  Injectable,
-  Component
-} from "@angular/core";
+import { InjectionToken, NgModule, Injectable, Component, inject } from "@angular/core";
 
 export const LIB_CONFIG = new InjectionToken<string>("Lib config");
 
@@ -20,7 +14,7 @@ export const LIB_CONFIG = new InjectionToken<string>("Lib config");
   standalone: false
 })
 export class LibraryComponent {
-  constructor(@Inject(LIB_CONFIG) public libraryConfig) {}
+  libraryConfig = inject(LIB_CONFIG);
 }
 
 @NgModule({
@@ -42,5 +36,5 @@ export class LibraryModule {
 
 @Injectable({ providedIn: "root" })
 export class LibraryService {
-  constructor(@Inject(LIB_CONFIG) public config) {}
+  config = inject(LIB_CONFIG);
 }

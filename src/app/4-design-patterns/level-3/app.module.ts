@@ -1,13 +1,5 @@
 import { CommonModule } from "@angular/common";
-import {
-  NgModule,
-  Component,
-  Directive,
-  ElementRef,
-  Renderer2,
-  AfterViewInit,
-  OnDestroy,
-} from "@angular/core";
+import { NgModule, Component, Directive, ElementRef, Renderer2, AfterViewInit, OnDestroy, inject } from "@angular/core";
 
 @Component({
   selector: "app-root",
@@ -35,9 +27,10 @@ export class AppComponent {}
   standalone: false
 })
 export class DirectiveA implements AfterViewInit, OnDestroy {
-  private citeElement: HTMLElement;
+  private elementRef = inject(ElementRef);
+  private renderer = inject(Renderer2);
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
+  private citeElement: HTMLElement;
 
   ngAfterViewInit() {
     this.citeElement = this.renderer.createElement("cite");

@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { NgModule, Component } from "@angular/core";
+import { NgModule, Component, inject } from "@angular/core";
 import { ServiceA, ServiceB, ServiceC, ServiceD, ServiceE } from "./services";
 
 @Component({
@@ -23,13 +23,11 @@ import { ServiceA, ServiceB, ServiceC, ServiceD, ServiceE } from "./services";
     standalone: false
 })
 export class AppComponent {
-  constructor(
-    public serviceA: ServiceA,
-    public serviceB: ServiceB,
-    public serviceC: ServiceC,
-    public serviceD: ServiceD,
-    public serviceE: ServiceE
-  ) {}
+  serviceA = inject(ServiceA);
+  serviceB = inject(ServiceB);
+  serviceC = inject(ServiceC);
+  serviceD = inject(ServiceD);
+  serviceE = inject(ServiceE);
 }
 
 @NgModule({

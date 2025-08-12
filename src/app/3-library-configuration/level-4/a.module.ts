@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, NgModule } from "@angular/core";
+import { Component, NgModule, inject } from "@angular/core";
 import { LibraryModule, LibraryService } from "./library.module";
 
 @Component({
@@ -15,7 +15,7 @@ import { LibraryModule, LibraryService } from "./library.module";
     standalone: false
 })
 export class ComponentA {
-  constructor(public libraryService: LibraryService) {}
+  libraryService = inject(LibraryService);
 }
 
 @NgModule({

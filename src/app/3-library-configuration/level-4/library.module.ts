@@ -1,13 +1,5 @@
 import { CommonModule } from "@angular/common";
-import {
-  Inject,
-  Injectable,
-  InjectionToken,
-  ModuleWithProviders,
-  NgModule,
-  Optional,
-  SkipSelf
-} from "@angular/core";
+import { Injectable, InjectionToken, ModuleWithProviders, NgModule, Optional, SkipSelf, inject } from "@angular/core";
 
 export const LIB_CONFIG = new InjectionToken<string>("Lib config");
 
@@ -19,7 +11,6 @@ const FOR_ROOT_TOKEN = new InjectionToken<boolean>(
   imports: [CommonModule]
 })
 export class LibraryModule {
-  constructor(@Optional() @Inject(FOR_ROOT_TOKEN) rootToken: boolean) {}
 
   public static forRoot(): ModuleWithProviders<LibraryModule> {
     return {
@@ -71,5 +62,5 @@ export class LibraryModule {
 
 @Injectable({ providedIn: "root" })
 export class LibraryService {
-  constructor(@Inject(LIB_CONFIG) public config) {}
+  config = inject(LIB_CONFIG);
 }

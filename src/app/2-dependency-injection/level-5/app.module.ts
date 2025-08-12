@@ -1,13 +1,5 @@
 import { CommonModule } from "@angular/common";
-import {
-  NgModule,
-  Component,
-  Inject,
-  AfterViewInit,
-  ViewContainerRef,
-  ViewChild,
-  Optional
-} from "@angular/core";
+import { NgModule, Component, AfterViewInit, ViewContainerRef, ViewChild, inject } from "@angular/core";
 import { ModuleLoadingService } from "../../module-loading.service";
 import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
 
@@ -53,17 +45,13 @@ import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
     standalone: false
 })
 export class AppComponent implements AfterViewInit {
+  tokenA = inject(TOKEN_A);
+  tokenB = inject(TOKEN_B);
+  tokenC = inject(TOKEN_C, { optional: true });
+  private moduleLoaderService = inject(ModuleLoadingService);
+
   @ViewChild("componentA", { read: ViewContainerRef })
   container: ViewContainerRef;
-
-  constructor(
-    @Inject(TOKEN_A) public tokenA,
-    @Inject(TOKEN_B) public tokenB,
-    // Optional avoid the app to crash if TOKEN_C value
-    // isn't provided by element or module injector
-    @Inject(TOKEN_C) @Optional() public tokenC,
-    private moduleLoaderService: ModuleLoadingService
-  ) {}
 
   ngAfterViewInit() {
     this.moduleLoaderService.lazyLoad(import("./a.module"), this.container);

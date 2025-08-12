@@ -1,11 +1,5 @@
 import { CommonModule } from "@angular/common";
-import {
-  NgModule,
-  Component,
-  ViewChild,
-  ViewContainerRef,
-  AfterViewInit
-} from "@angular/core";
+import { NgModule, Component, ViewChild, ViewContainerRef, AfterViewInit, inject } from "@angular/core";
 import { ModuleLoadingService } from "../../module-loading.service";
 import { LIB_CONFIG, LibraryModule, LibraryService } from "./library.module";
 
@@ -39,13 +33,11 @@ import { LIB_CONFIG, LibraryModule, LibraryService } from "./library.module";
     standalone: false
 })
 export class AppComponent implements AfterViewInit {
+  libraryService = inject(LibraryService);
+  private moduleLoadingService = inject(ModuleLoadingService);
+
   @ViewChild("componentA", { read: ViewContainerRef })
   container: ViewContainerRef;
-
-  constructor(
-    public libraryService: LibraryService,
-    private moduleLoadingService: ModuleLoadingService
-  ) {}
 
   ngAfterViewInit() {
     this.moduleLoadingService.lazyLoad(import("./a.module"), this.container);

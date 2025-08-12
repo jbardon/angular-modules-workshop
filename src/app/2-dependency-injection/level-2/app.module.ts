@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { NgModule, Component, Inject, InjectionToken } from "@angular/core";
+import { NgModule, Component, InjectionToken, inject } from "@angular/core";
 import { TokenType, TOKEN_A, TOKEN_B } from "./tokens";
 
 @Component({
@@ -27,13 +27,9 @@ import { TokenType, TOKEN_A, TOKEN_B } from "./tokens";
     standalone: false
 })
 export class AppComponent {
-  constructor(
-    // Use @Inject to specify the token to inject
-    // For a service, the argument type was used as a token
-    @Inject(TOKEN_A) public tokenA,
-    @Inject(TOKEN_B) public tokenB,
-    @Inject(TOKEN_C) public tokenC
-  ) {}
+  tokenA = inject(TOKEN_A);
+  tokenB = inject(TOKEN_B);
+  tokenC = inject(TOKEN_C);
 }
 
 @NgModule({

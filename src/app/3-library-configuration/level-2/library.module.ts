@@ -1,11 +1,5 @@
 import { CommonModule } from "@angular/common";
-import {
-  Component,
-  ModuleWithProviders,
-  NgModule,
-  Optional,
-  SkipSelf
-} from "@angular/core";
+import { Component, ModuleWithProviders, NgModule, inject } from "@angular/core";
 
 export class LibraryConfig {
   name: string;
@@ -17,7 +11,7 @@ export class LibraryConfig {
     standalone: false
 })
 export class LibraryComponent {
-  constructor(public libraryConfig: LibraryConfig) {}
+  libraryConfig = inject(LibraryConfig);
 }
 
 @NgModule({
@@ -28,7 +22,9 @@ export class LibraryComponent {
 export class LibraryModule {
   // Can only call forRoot once in AppModule (but easy to implement)
   // If you need forChild refer to level 2 implementing a FOR_ROOT token
-  constructor(@Optional() @SkipSelf() parentModule: LibraryModule) {
+  constructor() {
+    const parentModule = inject(LibraryModule, { optional: true, skipSelf: true });
+
     if (parentModule) {
       console.error(
         "[Level4] LibraryModule called twice, you can only import it in AppModule once"

@@ -1,22 +1,5 @@
-import { NgModule, Component } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { Router, RouterModule } from "@angular/router";
-import {
-  ComponentDeclarationModule,
-  componentDeclarationModuleRoutes
-} from "./1-component-declaration/component-declaration.module";
-import {
-  DependencyInjectionModule,
-  dependencyInjectionModuleRoutes
-} from "./2-dependency-injection/dependency-injection.module";
-import {
-  LibraryConfigurationModule,
-  libraryConfigurationModuleRoutes
-} from "./3-library-configuration/library-configuration.module";
-import {
-  DesignPatternsModule,
-  designPatternsModuleRoutes
-} from "./4-design-patterns/design-patterns.module";
+import { Component, inject } from "@angular/core";
+import { Router, RouterLinkActive, RouterLink, RouterOutlet } from "@angular/router";
 
 /*
 Notes:
@@ -65,9 +48,11 @@ Notes:
       }
     `
     ],
-    standalone: false
+    imports: [RouterLinkActive, RouterLink, RouterOutlet]
 })
 export class AppComponent {
+  private router = inject(Router);
+
   courses = [
     {
       name: "Component",
@@ -101,56 +86,6 @@ export class AppComponent {
       this.courses[0]
     );
   }
-
-  constructor(private router: Router) {}
 }
 
-@NgModule({
-  imports: [
-    BrowserModule,
-    DependencyInjectionModule,
-    ComponentDeclarationModule,
-    LibraryConfigurationModule,
-    DesignPatternsModule,
 
-    // Don't use lazy load for each course
-    // So levels in courses can test modules eager loading
-    //
-    // Ex: @Injectable({ providedIn: 'root' }) with constructor
-    //     injection and token provided in level module.
-    //
-    //     Lazy loading courses would make level module providers
-    //     not available for main AppModule and throw an error
-    //
-    RouterModule.forRoot(
-      [
-        {
-          path: "component-declaration",
-          children: componentDeclarationModuleRoutes
-        },
-        {
-          path: "dependency-injection",
-          children: dependencyInjectionModuleRoutes
-        },
-        {
-          path: "library-configuration",
-          children: libraryConfigurationModuleRoutes
-        },
-        {
-          path: "design-patterns",
-          children: designPatternsModuleRoutes
-        },
-        {
-          path: "",
-          pathMatch: "full",
-          redirectTo: "component-declaration"
-        }
-      ],
-      { useHash: false }
-      //{ enableTracing: true }
-    )
-  ],
-  declarations: [AppComponent],
-  bootstrap: [AppComponent]
-})
-export class AppModule {}

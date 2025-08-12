@@ -1,11 +1,5 @@
 import { CommonModule } from "@angular/common";
-import {
-  Component,
-  forwardRef,
-  Inject,
-  InjectionToken,
-  NgModule
-} from "@angular/core";
+import { Component, forwardRef, InjectionToken, NgModule, inject } from "@angular/core";
 
 export const COMPONENT_B_REF = new InjectionToken<ComponentB>(
   "Closest Component B"
@@ -42,7 +36,7 @@ export class ComponentB {
   standalone: false
 })
 export class ChildComponentB {
-  constructor(@Inject(COMPONENT_B_REF) public componentB: ComponentB) {}
+  componentB = inject<ComponentB>(COMPONENT_B_REF);
 }
 
 @NgModule({

@@ -1,4 +1,4 @@
-import { Directive, ElementRef, NgModule, Output } from "@angular/core";
+import { Directive, ElementRef, NgModule, Output, inject } from "@angular/core";
 import { fromEvent } from "rxjs";
 import { map, scan, startWith, tap } from "rxjs/operators";
 
@@ -12,6 +12,8 @@ import { map, scan, startWith, tap } from "rxjs/operators";
   standalone: false
 })
 export class DirectiveC {
+  private elementRef = inject(ElementRef);
+
   private count$ = fromEvent(this.elementRef.nativeElement, "click").pipe(
     scan(count => count + 1, 1),
     startWith(1)
@@ -23,7 +25,7 @@ export class DirectiveC {
 
   fontSize = 10;
 
-  constructor(private elementRef: ElementRef) {
+  constructor() {
     this.count$.pipe(tap(count => (this.fontSize = count * 10))).subscribe();
   }
 }

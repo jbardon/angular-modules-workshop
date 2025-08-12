@@ -1,12 +1,5 @@
 import { CommonModule } from "@angular/common";
-import {
-  NgModule,
-  Component,
-  Directive,
-  TemplateRef,
-  ViewContainerRef,
-  OnInit
-} from "@angular/core";
+import { NgModule, Component, Directive, TemplateRef, ViewContainerRef, OnInit, inject } from "@angular/core";
 
 @Component({
   selector: "app-root",
@@ -60,12 +53,10 @@ export class ComponentA {
   standalone: false
 })
 export class DirectiveA implements OnInit {
-  private context: any;
+  private templateRef = inject<TemplateRef<any>>(TemplateRef);
+  private viewContainer = inject(ViewContainerRef);
 
-  constructor(
-    private templateRef: TemplateRef<any>,
-    private viewContainer: ViewContainerRef
-  ) {}
+  private context: any;
 
   ngOnInit() {
     this.context = {

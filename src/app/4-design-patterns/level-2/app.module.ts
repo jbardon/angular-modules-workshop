@@ -1,11 +1,5 @@
 import { CommonModule } from "@angular/common";
-import {
-  NgModule,
-  Component,
-  Directive,
-  ElementRef,
-  ContentChild
-} from "@angular/core";
+import { NgModule, Component, Directive, ElementRef, ContentChild, inject } from "@angular/core";
 
 @Component({
   selector: "app-root",
@@ -39,7 +33,7 @@ export class AppComponent {}
   standalone: false,
 })
 export class DirectiveA {
-  constructor(private elementRef: ElementRef) {}
+  private elementRef = inject(ElementRef);
 
   get contentText() {
     return this.elementRef.nativeElement.textContent;

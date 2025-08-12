@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, NgModule } from "@angular/core";
+import { Component, NgModule, inject } from "@angular/core";
 
 export class LibraryConfig {
   name: string;
@@ -11,7 +11,7 @@ export class LibraryConfig {
     standalone: false
 })
 export class LibraryComponent {
-  constructor(public libraryConfig: LibraryConfig) {}
+  libraryConfig = inject(LibraryConfig);
 }
 
 @NgModule({

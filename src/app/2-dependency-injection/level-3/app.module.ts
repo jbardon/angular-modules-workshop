@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { NgModule, Component, Inject } from "@angular/core";
+import { NgModule, Component, inject } from "@angular/core";
 import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
 
 @Component({
@@ -36,11 +36,9 @@ import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
     standalone: false
 })
 export class AppComponent {
-  constructor(
-    @Inject(TOKEN_A) public tokenA,
-    @Inject(TOKEN_B) public tokenB,
-    @Inject(TOKEN_C) public tokenC
-  ) {}
+  tokenA = inject(TOKEN_A);
+  tokenB = inject(TOKEN_B);
+  tokenC = inject(TOKEN_C);
 }
 
 @Component({
@@ -58,11 +56,9 @@ export class AppComponent {
     standalone: false
 })
 export class ChildComponent {
-  constructor(
-    @Inject(TOKEN_A) public level3A,
-    @Inject(TOKEN_B) public level3B,
-    @Inject(TOKEN_C) public level3C
-  ) {}
+  level3A = inject(TOKEN_A);
+  level3B = inject(TOKEN_B);
+  level3C = inject(TOKEN_C);
 }
 
 @NgModule({

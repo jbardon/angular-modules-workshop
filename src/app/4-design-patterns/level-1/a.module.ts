@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, NgModule, Host, Optional } from "@angular/core";
+import { Component, NgModule, inject } from "@angular/core";
 
 @Component({
   selector: "component-a",
@@ -27,7 +27,7 @@ export class ComponentA {
   standalone: false
 })
 export class ChildComponentA {
-  constructor(public componentA: ComponentA) {}
+  componentA = inject(ComponentA);
 }
 
 @Component({
@@ -41,7 +41,7 @@ export class ChildComponentA {
   standalone: false
 })
 export class BabyComponentA {
-  constructor(@Host() @Optional() public componentA: ComponentA) {}
+  componentA = inject(ComponentA, { host: true, optional: true });
 }
 
 @NgModule({
