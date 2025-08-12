@@ -1,8 +1,8 @@
 import { Component, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 
 @Component({
-  selector: "level-2a",
-  template: `
+    selector: "level-2a",
+    template: `
     <fieldset>
       <legend>ModuleA</legend>
 
@@ -18,7 +18,8 @@ import { Component, NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
        -->
       <app-hello></app-hello>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class ComponentA {}
 

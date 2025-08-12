@@ -12,8 +12,8 @@ import { ModuleLoadingService } from "../../module-loading.service";
 import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
 
 @Component({
-  selector: "level-5",
-  template: `
+    selector: "level-5",
+    template: `
     <fieldset>
       <legend>Level 5: Lazy loaded modules</legend>
       <p>Takeaways</p>
@@ -49,7 +49,8 @@ import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
       </fieldset>
     </fieldset>
   `,
-  providers: [ModuleLoadingService]
+    providers: [ModuleLoadingService],
+    standalone: false
 })
 export class AppComponent implements AfterViewInit {
   @ViewChild("componentA", { read: ViewContainerRef })

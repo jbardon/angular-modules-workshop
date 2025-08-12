@@ -1,19 +1,21 @@
 import { Component, NgModule } from "@angular/core";
 
 @Component({
-  selector: "hello-a",
-  template: "HelloA"
+    selector: "hello-a",
+    template: "HelloA",
+    standalone: false
 })
 export class HelloComponentA {}
 
 @Component({
-  selector: "level-1a",
-  template: `
+    selector: "level-1a",
+    template: `
     <fieldset>
       <legend>ModuleA</legend>
       <hello-a></hello-a>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class ComponentA {}
 

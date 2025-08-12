@@ -3,15 +3,16 @@ import { Component, Inject, NgModule } from "@angular/core";
 import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
 
 @Component({
-  selector: "level-5-a",
-  template: `
+    selector: "level-5-a",
+    template: `
     <fieldset>
       <legend>ModuleA (lazy loaded)</legend>
       <p>TOKEN_A: {{ tokenA | json }}</p>
       <p>TOKEN_B: {{ tokenB | json }}</p>
       <p>TOKEN_C: {{ tokenC | json }}</p>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class ComponentA {
   constructor(

@@ -3,8 +3,8 @@ import { NgModule, Component } from "@angular/core";
 import { LibraryConfig, LibraryModule } from "./library.module";
 
 @Component({
-  selector: "level-3",
-  template: `
+    selector: "level-3",
+    template: `
     <fieldset>
       <legend>Level 3: Provide config from app</legend>
       <p>Takeaways</p>
@@ -22,7 +22,8 @@ import { LibraryConfig, LibraryModule } from "./library.module";
         <lib-component></lib-component>
       </fieldset>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent {}
 

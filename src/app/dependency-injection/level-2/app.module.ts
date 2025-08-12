@@ -3,8 +3,8 @@ import { NgModule, Component, Inject, InjectionToken } from "@angular/core";
 import { TokenType, TOKEN_A, TOKEN_B } from "./tokens";
 
 @Component({
-  selector: "level-2",
-  template: `
+    selector: "level-2",
+    template: `
     <fieldset>
       <legend>Level 2: Create a custom token</legend>
       <p>Takeaways</p>
@@ -23,7 +23,8 @@ import { TokenType, TOKEN_A, TOKEN_B } from "./tokens";
       <p>TOKEN_B: {{ tokenB | json }}</p>
       <p>TOKEN_C: {{ tokenC | json }}</p>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent {
   constructor(

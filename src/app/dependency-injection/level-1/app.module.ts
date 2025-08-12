@@ -3,8 +3,8 @@ import { NgModule, Component } from "@angular/core";
 import { ServiceA, ServiceB, ServiceC, ServiceD, ServiceE } from "./services";
 
 @Component({
-  selector: "level-1",
-  template: `
+    selector: "level-1",
+    template: `
     <fieldset>
       <legend>Level 1: Inject a simple service</legend>
       <p>Takeaways</p>
@@ -19,7 +19,8 @@ import { ServiceA, ServiceB, ServiceC, ServiceD, ServiceE } from "./services";
       <p>serviceD.name: {{ serviceD.name | json }}</p>
       <p>serviceE.name: {{ serviceE.name | json }}</p>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent {
   constructor(

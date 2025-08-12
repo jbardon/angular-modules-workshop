@@ -6,8 +6,9 @@ export class LibraryConfig {
 }
 
 @Component({
-  selector: "lib-component",
-  template: "<p>libraryConfig.name: {{ libraryConfig.name | json }}</p>"
+    selector: "lib-component",
+    template: "<p>libraryConfig.name: {{ libraryConfig.name | json }}</p>",
+    standalone: false
 })
 export class LibraryComponent {
   constructor(public libraryConfig: LibraryConfig) {}

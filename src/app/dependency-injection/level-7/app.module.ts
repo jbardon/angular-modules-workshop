@@ -9,8 +9,8 @@ import {
 import { TOKEN_A, TOKEN_B, TOKEN_C, TOKEN_D } from "./tokens";
 
 @Component({
-  selector: "level-7",
-  template: `
+    selector: "level-7",
+    template: `
     <fieldset>
       <legend>Level 7: Providers with dependencies and options</legend>
       <p>Takeaways</p>
@@ -29,7 +29,8 @@ import { TOKEN_A, TOKEN_B, TOKEN_C, TOKEN_D } from "./tokens";
       <p>TOKEN_D: {{ tokenD | json }}</p>
       <p>TOKEN_E: {{ tokenE | json }}</p>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent {
   constructor(

@@ -4,8 +4,8 @@ import { ModuleA } from "./a.module";
 import { ModuleB } from "./b.module";
 
 @Component({
-  selector: "level-1",
-  template: `
+    selector: "level-1",
+    template: `
     <fieldset>
       <legend>Level 1: Export and import a component</legend>
       <p>Takeaways</p>
@@ -33,7 +33,8 @@ import { ModuleB } from "./b.module";
         <level-1b></level-1b>
       </fieldset>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent {}
 

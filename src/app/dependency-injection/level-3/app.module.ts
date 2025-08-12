@@ -3,8 +3,8 @@ import { NgModule, Component, Inject } from "@angular/core";
 import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
 
 @Component({
-  selector: "level-3",
-  template: `
+    selector: "level-3",
+    template: `
     <fieldset>
       <legend>Level 3: Providers at component level (ElementInjector)</legend>
       <p>Takeaways</p>
@@ -28,11 +28,12 @@ import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
       </fieldset>
     </fieldset>
   `,
-  providers: [
-    // Component level provider (ElementInjector) overrides module providers (ModuleInjector)
-    { provide: TOKEN_B, useValue: "AppComponent" },
-    { provide: TOKEN_C, useValue: "AppComponent" }
-  ]
+    providers: [
+        // Component level provider (ElementInjector) overrides module providers (ModuleInjector)
+        { provide: TOKEN_B, useValue: "AppComponent" },
+        { provide: TOKEN_C, useValue: "AppComponent" }
+    ],
+    standalone: false
 })
 export class AppComponent {
   constructor(
@@ -43,8 +44,8 @@ export class AppComponent {
 }
 
 @Component({
-  selector: "level-3-a",
-  template: `
+    selector: "level-3-a",
+    template: `
     <fieldset>
       <legend>ChildComponent</legend>
       <p>TOKEN_A: {{ level3A | json }}</p>
@@ -52,8 +53,9 @@ export class AppComponent {
       <p>TOKEN_C: {{ level3C | json }}</p>
     </fieldset>
   `,
-  // Child component ElementInjector overrides it's parent component injector
-  providers: [{ provide: TOKEN_C, useValue: "ChildComponent" }]
+    // Child component ElementInjector overrides it's parent component injector
+    providers: [{ provide: TOKEN_C, useValue: "ChildComponent" }],
+    standalone: false
 })
 export class ChildComponent {
   constructor(

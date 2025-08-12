@@ -8,8 +8,8 @@ import {
 } from "@angular/core";
 
 @Component({
-  selector: "level-0",
-  template: `
+    selector: "level-0",
+    template: `
     <fieldset>
       <legend>Level 0: Informations about DI</legend>
       <p>Takeaways</p>
@@ -32,7 +32,8 @@ import {
 
       <p>tokenValue: {{ tokenValue | json }}</p>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent implements OnInit {
   tokenValue = "";

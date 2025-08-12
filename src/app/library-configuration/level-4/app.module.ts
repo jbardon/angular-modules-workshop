@@ -3,8 +3,8 @@ import { NgModule, Component } from "@angular/core";
 import { LibraryModule } from "./library.module";
 
 @Component({
-  selector: "level-4",
-  template: `
+    selector: "level-4",
+    template: `
     <fieldset>
       <legend>Level 4: forRoot syntax to provide configuration</legend>
       <p>Takeaways</p>
@@ -30,7 +30,8 @@ import { LibraryModule } from "./library.module";
         <lib-component></lib-component>
       </fieldset>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent {}
 

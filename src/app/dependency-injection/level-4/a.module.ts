@@ -3,8 +3,8 @@ import { Component, NgModule, Inject } from "@angular/core";
 import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
 
 @Component({
-  selector: "level-4a",
-  template: `
+    selector: "level-4a",
+    template: `
     <fieldset>
       <legend>ModuleA</legend>
 
@@ -12,7 +12,8 @@ import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
       <p>TOKEN_B: {{ tokenB | json }}</p>
       <p>TOKEN_C: {{ tokenC | json }}</p>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class ComponentA {
   constructor(

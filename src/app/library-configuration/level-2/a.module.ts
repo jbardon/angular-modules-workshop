@@ -3,15 +3,16 @@ import { Component, NgModule } from "@angular/core";
 import { LibraryModule } from "./library.module";
 
 @Component({
-  selector: "level-2-a",
-  template: `
+    selector: "level-2-a",
+    template: `
     <fieldset>
       <legend>ModuleA (lazy loaded)</legend>
 
       <!-- Same value as in AppModule -->
       <lib-component></lib-component>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class ComponentA {}
 

@@ -2,8 +2,8 @@ import { CommonModule } from "@angular/common";
 import { NgModule, Component } from "@angular/core";
 
 @Component({
-  selector: "level-0",
-  template: `
+    selector: "level-0",
+    template: `
     <fieldset>
       <legend>Level 0: Declare and use a component</legend>
       <p>Takeaways</p>
@@ -25,13 +25,15 @@ import { NgModule, Component } from "@angular/core";
         <hello></hello>
       </fieldset>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent {}
 
 @Component({
-  selector: "hello",
-  template: "Hello"
+    selector: "hello",
+    template: "Hello",
+    standalone: false
 })
 export class HelloComponent {}
 

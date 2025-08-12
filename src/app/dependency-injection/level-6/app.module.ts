@@ -13,10 +13,11 @@ export const TOKEN_A = new InjectionToken<string>("Token A");
 export const TOKEN_B = new InjectionToken<string>("Token B");
 
 @Component({
-  selector: "level-6",
-  template: `
+    selector: "level-6",
+    template: `
     <level-6-a></level-6-a>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent {}
 

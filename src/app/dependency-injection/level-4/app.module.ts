@@ -5,8 +5,8 @@ import { ModuleB } from "./b.module";
 import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
 
 @Component({
-  selector: "level-4",
-  template: `
+    selector: "level-4",
+    template: `
     <fieldset>
       <legend>
         Level 4: Providers at module level with imports (ModuleInjector)
@@ -44,7 +44,8 @@ import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
         <level-4b></level-4b>
       </fieldset>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent {
   constructor(

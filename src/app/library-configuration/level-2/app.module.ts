@@ -10,8 +10,8 @@ import { ModuleLoadingService } from "../../module-loading.service";
 import { LibraryModule } from "./library.module";
 
 @Component({
-  selector: "level-2",
-  template: `
+    selector: "level-2",
+    template: `
     <fieldset>
       <legend>Level 2: Provide once with forRoot</legend>
       <p>Takeaways</p>
@@ -36,7 +36,8 @@ import { LibraryModule } from "./library.module";
       </fieldset>
     </fieldset>
   `,
-  providers: [ModuleLoadingService]
+    providers: [ModuleLoadingService],
+    standalone: false
 })
 export class AppComponent implements AfterViewInit {
   @ViewChild("componentA", { read: ViewContainerRef }) container: ViewContainerRef;

@@ -10,8 +10,8 @@ Notes:
 - https://stackoverflow.com/a/45153972
 */
 @Component({
-  selector: "my-app",
-  template: `
+    selector: "my-app",
+    template: `
     <nav>
       <div style="margin-bottom: 10px;">
         <a
@@ -36,8 +36,8 @@ Notes:
     </nav>
     <router-outlet></router-outlet>
   `,
-  styles: [
-    `
+    styles: [
+        `
       .active {
         color: black;
         font-weight: bold;
@@ -46,7 +46,8 @@ Notes:
         cursor: default;
       }
     `
-  ],
+    ],
+    standalone: false
 })
 export class AppComponent {
   courses = [

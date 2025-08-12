@@ -1,8 +1,9 @@
 import { Component, NgModule } from "@angular/core";
 
 @Component({
-  selector: "hello",
-  template: "Hello"
+    selector: "hello",
+    template: "Hello",
+    standalone: false
 })
 export class HelloComponent {}
 

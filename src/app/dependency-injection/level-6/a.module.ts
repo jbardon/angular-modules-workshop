@@ -23,8 +23,8 @@ import { TOKEN_C } from "./tokens";
 console.log("[Level 6] ModuleA, TOKEN_A=", TOKEN_A);
 
 @Component({
-  selector: "level-6-a",
-  template: `
+    selector: "level-6-a",
+    template: `
     <fieldset>
       <legend>Level 6: Circular imports</legend>
       <p>Takeaways</p>
@@ -39,7 +39,8 @@ console.log("[Level 6] ModuleA, TOKEN_A=", TOKEN_A);
       <p>TOKEN_B: {{ tokenB | json }}</p>
       <p>TOKEN_C: {{ tokenC | json }}</p>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class ComponentA {
   constructor(

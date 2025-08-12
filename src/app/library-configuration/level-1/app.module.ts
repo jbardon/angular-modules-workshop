@@ -10,8 +10,8 @@ import { ModuleLoadingService } from "../../module-loading.service";
 import { LIB_CONFIG, LibraryModule } from "./library.module";
 
 @Component({
-  selector: "level-1",
-  template: `
+    selector: "level-1",
+    template: `
     <fieldset>
       <legend>Level 1: Issue without forRoot/forChild</legend>
       <p>Takeaways</p>
@@ -33,7 +33,8 @@ import { LIB_CONFIG, LibraryModule } from "./library.module";
       </fieldset>
     </fieldset>
   `,
-  providers: [ModuleLoadingService]
+    providers: [ModuleLoadingService],
+    standalone: false
 })
 export class AppComponent implements AfterViewInit {
   @ViewChild("componentA", { read: ViewContainerRef })

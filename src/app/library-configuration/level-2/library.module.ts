@@ -12,8 +12,9 @@ import {
 export const LIB_CONFIG = new InjectionToken<string>("Lib config");
 
 @Component({
-  selector: "lib-component",
-  template: "<p>LIB_CONFIG: {{ libraryConfig | json }}</p>"
+    selector: "lib-component",
+    template: "<p>LIB_CONFIG: {{ libraryConfig | json }}</p>",
+    standalone: false
 })
 export class LibraryComponent {
   constructor(@Inject(LIB_CONFIG) public libraryConfig) {}
