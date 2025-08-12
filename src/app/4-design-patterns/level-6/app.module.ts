@@ -28,7 +28,8 @@ import { bufferCount, mapTo, scan } from "rxjs/operators";
         Click 3 times
       </div>
     </fieldset>
-  `
+  `,
+  standalone: false
 })
 export class AppComponent {
   directiveAEvent() {
@@ -57,7 +58,8 @@ export class ServiceA extends Observable<number> {
   providers: [ServiceA],
   host: {
     "[style.userSelect]": "'none'"
-  }
+  },
+  standalone: false
 })
 export class DirectiveA {
   @Output() directiveA = this.serviceA.pipe(

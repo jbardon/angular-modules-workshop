@@ -8,7 +8,8 @@ import { Component, NgModule, Host, Optional } from "@angular/core";
       <legend>ComponentA</legend>
       <child-component-a></child-component-a>
     </fieldset>
-  `
+  `,
+  standalone: false
 })
 export class ComponentA {
   name = "ComponentA";
@@ -22,7 +23,8 @@ export class ComponentA {
       <p>componentA.name: {{ componentA.name | json }}</p>
       <baby-component-a></baby-component-a>
     </fieldset>
-  `
+  `,
+  standalone: false
 })
 export class ChildComponentA {
   constructor(public componentA: ComponentA) {}
@@ -35,7 +37,8 @@ export class ChildComponentA {
       <legend>BabyComponentA</legend>
       <p>componentA.name: {{ componentA?.name | json }}</p>
     </fieldset>
-  `
+  `,
+  standalone: false
 })
 export class BabyComponentA {
   constructor(@Host() @Optional() public componentA: ComponentA) {}

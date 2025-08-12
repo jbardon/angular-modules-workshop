@@ -29,12 +29,14 @@ import {
         </component-a>
       </fieldset>
     </fieldset>
-  `
+  `,
+  standalone: false
 })
 export class AppComponent {}
 
 @Directive({
-  selector: `[directiveA]`
+  selector: `[directiveA]`,
+  standalone: false,
 })
 export class DirectiveA {
   constructor(private elementRef: ElementRef) {}
@@ -51,7 +53,8 @@ export class DirectiveA {
       <legend>ComponentA</legend>
       <p>directiveA.contentText: {{ directiveA.contentText | json }}</p>
     </fieldset>
-  `
+  `,
+  standalone: false,
 })
 export class ComponentA {
   @ContentChild(DirectiveA) directiveA: DirectiveA;

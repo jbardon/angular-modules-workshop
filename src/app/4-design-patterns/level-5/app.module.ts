@@ -45,7 +45,8 @@ import { ModuleC, DirectiveC } from "./c.module";
 
       <div>allClicked: {{ allClicked }}</div>
     </fieldset>
-  `
+  `,
+  standalone: false
 })
 export class AppComponent implements AfterViewInit {
   @ViewChild(DirectiveA) directiveA;

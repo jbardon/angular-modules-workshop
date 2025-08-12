@@ -49,7 +49,8 @@ import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
       </fieldset>
     </fieldset>
   `,
-  providers: [ModuleLoadingService]
+    providers: [ModuleLoadingService],
+    standalone: false
 })
 export class AppComponent implements AfterViewInit {
   @ViewChild("componentA", { read: ViewContainerRef })

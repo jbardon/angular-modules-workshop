@@ -44,7 +44,8 @@ import { TOKEN_A, TOKEN_B, TOKEN_C } from "./tokens";
         <component-b></component-b>
       </fieldset>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent {
   constructor(

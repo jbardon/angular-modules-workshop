@@ -16,7 +16,8 @@ export const TOKEN_B = new InjectionToken<string>("Token B");
   selector: "app-root",
   template: `
     <component-a></component-a>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent {}
 

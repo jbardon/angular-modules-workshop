@@ -16,7 +16,8 @@ export const LIB_CONFIG = new InjectionToken<string>("Lib config");
       <legend>LibraryComponent</legend>
       <p>LIB_CONFIG: {{ libraryConfig | json }}</p>
     </fieldset>
-  `
+  `,
+  standalone: false
 })
 export class LibraryComponent {
   constructor(@Inject(LIB_CONFIG) public libraryConfig) {}

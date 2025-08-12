@@ -19,6 +19,7 @@ export const COMPONENT_B_REF = new InjectionToken<ComponentB>(
       <child-component-b></child-component-b>
     </fieldset>
   `,
+  standalone: false,
   providers: [
     {
       provide: COMPONENT_B_REF,
@@ -37,7 +38,8 @@ export class ComponentB {
       <legend>ChildComponentB</legend>
       <p>componentB.name: {{ componentB.name | json }}</p>
     </fieldset>
-  `
+  `,
+  standalone: false
 })
 export class ChildComponentB {
   constructor(@Inject(COMPONENT_B_REF) public componentB: ComponentB) {}

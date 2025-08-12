@@ -9,7 +9,8 @@ import {
 
 @Directive({
   selector: "[directiveA]",
-  exportAs: "instanceA"
+  exportAs: "instanceA",
+  standalone: false
 })
 export class DirectiveA {
   @Output() countChanged = new EventEmitter<any>();

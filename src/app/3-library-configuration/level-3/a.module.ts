@@ -12,7 +12,8 @@ import { LibraryModule, LibraryService } from "./library.module";
       <p>libraryService.config: {{ libraryService.config }}</p>
       <lib-component></lib-component>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class ComponentA {
   constructor(public libraryService: LibraryService) {}

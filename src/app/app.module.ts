@@ -26,43 +26,46 @@ Notes:
 - https://stackoverflow.com/a/45153972
 */
 @Component({
-  selector: "my-app",
-  template: `
+    selector: "my-app",
+    template: `
     <nav>
       <div style="margin-bottom: 10px;">
-        <a
-          *ngFor="let course of courses"
-          style="margin-right: 10px;"
-          [routerLink]="course.path"
-          routerLinkActive="active"
-          [title]="course.tooltip"
-          >{{ course.name }}</a
-        >
-      </div>
-
-      <div [style.margin-bottom.px]="20">
-        <a
-          style="margin-right: 10px;"
-          *ngFor="let level of currentCourse.levels"
-          [routerLink]="currentCourse.path + '/' + level"
-          routerLinkActive="active"
-          >{{ level }}</a
-        >
-      </div>
-    </nav>
-    <router-outlet></router-outlet>
-  `,
-  styles: [
-    `
+        @for (course of courses; track course) {
+          <a
+            style="margin-right: 10px;"
+            [routerLink]="course.path"
+            routerLinkActive="active"
+            [title]="course.tooltip"
+            >{{ course.name }}</a
+            >
+          }
+        </div>
+    
+        <div [style.margin-bottom.px]="20">
+          @for (level of currentCourse.levels; track level) {
+            <a
+              style="margin-right: 10px;"
+              [routerLink]="currentCourse.path + '/' + level"
+              routerLinkActive="active"
+              >{{ level }}</a
+              >
+            }
+          </div>
+        </nav>
+        <router-outlet></router-outlet>
+    `,
+    styles: [
+        `
       .active {
         color: black;
         font-weight: bold;
         text-decoration: none;
-        // pointer-events: none;
+        /* pointer-events: none; */
         cursor: default;
       }
     `
-  ]
+    ],
+    standalone: false
 })
 export class AppComponent {
   courses = [
@@ -142,7 +145,8 @@ export class AppComponent {
           pathMatch: "full",
           redirectTo: "component-declaration"
         }
-      ]
+      ],
+      { useHash: false }
       //{ enableTracing: true }
     )
   ],

@@ -25,12 +25,14 @@ import {
       <div directiveA>Hello</div>
       <div componentA>Hello</div>
     </fieldset>
-  `
+  `,
+  standalone: false
 })
 export class AppComponent {}
 
 @Directive({
-  selector: `[directiveA]`
+  selector: `[directiveA]`,
+  standalone: false
 })
 export class DirectiveA implements AfterViewInit, OnDestroy {
   private citeElement: HTMLElement;
@@ -57,7 +59,8 @@ export class DirectiveA implements AfterViewInit, OnDestroy {
   template: `
     <ng-content></ng-content>
     <cite>jbardon</cite>
-  `
+  `,
+  standalone: false
 })
 export class ComponentA {}
 

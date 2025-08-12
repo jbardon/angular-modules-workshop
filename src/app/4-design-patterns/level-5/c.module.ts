@@ -8,7 +8,8 @@ import { map, scan, startWith, tap } from "rxjs/operators";
   host: {
     "[style.fontSize.px]": "fontSize",
     "[style.userSelect]": "'none'"
-  }
+  },
+  standalone: false
 })
 export class DirectiveC {
   private count$ = fromEvent(this.elementRef.nativeElement, "click").pipe(

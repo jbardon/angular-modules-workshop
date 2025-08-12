@@ -33,7 +33,8 @@ import { ModuleB } from "./b.module";
         <component-b></component-b>
       </fieldset>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent {}
 

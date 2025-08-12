@@ -1,8 +1,9 @@
 import { Component, NgModule } from "@angular/core";
 
 @Component({
-  selector: "hello-b",
-  template: "HelloB"
+    selector: "hello-b",
+    template: "HelloB",
+    standalone: false
 })
 export class HelloComponentB {}
 
@@ -13,7 +14,8 @@ export class HelloComponentB {}
       <legend>ModuleB</legend>
       <hello-b></hello-b>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class ComponentB {}
 

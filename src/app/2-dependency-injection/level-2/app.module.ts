@@ -23,7 +23,8 @@ import { TokenType, TOKEN_A, TOKEN_B } from "./tokens";
       <p>TOKEN_B: {{ tokenB | json }}</p>
       <p>TOKEN_C: {{ tokenC | json }}</p>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent {
   constructor(

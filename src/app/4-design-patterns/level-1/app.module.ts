@@ -19,7 +19,8 @@ import { ModuleB } from "./b.module";
       <component-a></component-a><br />
       <component-b></component-b>
     </fieldset>
-  `
+  `,
+  standalone: false
 })
 export class AppComponent {}
 

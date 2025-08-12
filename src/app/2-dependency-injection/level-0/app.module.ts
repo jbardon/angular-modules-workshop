@@ -32,7 +32,8 @@ import {
 
       <p>tokenValue: {{ tokenValue | json }}</p>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent implements OnInit {
   tokenValue = "";

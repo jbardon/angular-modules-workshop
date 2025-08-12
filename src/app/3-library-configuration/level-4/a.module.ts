@@ -11,7 +11,8 @@ import { LibraryModule, LibraryService } from "./library.module";
       <!-- Same value as in AppModule -->
       <p>libraryService.config: {{ libraryService.config }}</p>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class ComponentA {
   constructor(public libraryService: LibraryService) {}

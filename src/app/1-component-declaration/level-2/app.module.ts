@@ -29,13 +29,15 @@ import { HelloModule } from "./hello.module";
         <component-b></component-b>
       </fieldset>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent {}
 
 @Component({
-  selector: "app-hello",
-  template: "AppHello"
+    selector: "app-hello",
+    template: "AppHello",
+    standalone: false
 })
 export class AppHelloComponent {}
 

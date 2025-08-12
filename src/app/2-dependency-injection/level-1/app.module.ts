@@ -19,7 +19,8 @@ import { ServiceA, ServiceB, ServiceC, ServiceD, ServiceE } from "./services";
       <p>serviceD.name: {{ serviceD.name | json }}</p>
       <p>serviceE.name: {{ serviceE.name | json }}</p>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent {
   constructor(

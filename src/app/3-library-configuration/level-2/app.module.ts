@@ -30,7 +30,8 @@ import { LibraryModule } from "./library.module";
         <lib-component></lib-component>
       </fieldset>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class AppComponent {}
 

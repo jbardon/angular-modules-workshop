@@ -16,7 +16,8 @@ import { HelloModule } from "./hello.module";
        -->
       <app-hello></app-hello>
     </fieldset>
-  `
+  `,
+    standalone: false
 })
 export class ComponentB {}
 

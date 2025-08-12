@@ -36,13 +36,14 @@ import { LibraryModule, LibraryService } from "./library.module";
       </fieldset>
     </fieldset>
   `,
-  providers: [ModuleLoadingService]
+    providers: [ModuleLoadingService],
+    standalone: false
 })
 export class AppComponent implements AfterViewInit {
   @ViewChild("componentA", { read: ViewContainerRef }) container: ViewContainerRef;
 
   constructor(
-    public libraryService: LibraryService, 
+    public libraryService: LibraryService,
     private moduleLoadingService: ModuleLoadingService
   ) {}
 

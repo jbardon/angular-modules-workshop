@@ -33,13 +33,15 @@ import {
         <button (click)="counter.increment()">Add</button></span
       >
     </fieldset>
-  `
+  `,
+  standalone: false
 })
 export class AppComponent {}
 
 @Component({
   selector: "componentA",
-  template: "<ng-content></ng-content>"
+  template: "<ng-content></ng-content>",
+  standalone: false
 })
 export class ComponentA {
   private counter = 0;
@@ -54,7 +56,8 @@ export class ComponentA {
 }
 
 @Directive({
-  selector: "[directiveA]"
+  selector: "[directiveA]",
+  standalone: false
 })
 export class DirectiveA implements OnInit {
   private context: any;

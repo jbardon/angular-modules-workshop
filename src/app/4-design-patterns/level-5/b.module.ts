@@ -7,7 +7,8 @@ import { Directive, EventEmitter, NgModule, Output } from "@angular/core";
     "[style.fontSize.px]": "fontSize",
     "[style.userSelect]": "'none'",
     "(click)": "click($event.target)"
-  }
+  },
+  standalone: false
 })
 export class DirectiveB {
   @Output() countChanged = new EventEmitter<any>();
