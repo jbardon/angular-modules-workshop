@@ -14,28 +14,30 @@ Notes:
     template: `
     <nav>
       <div style="margin-bottom: 10px;">
-        <a
-          *ngFor="let course of courses"
-          style="margin-right: 10px;"
-          [routerLink]="course.path"
-          routerLinkActive="active"
-          [title]="course.tooltip"
-          >{{ course.name }}</a
-        >
-      </div>
-
-      <div [style.margin-bottom.px]="20">
-        <a
-          style="margin-right: 10px;"
-          *ngFor="let level of currentCourse.levels"
-          [routerLink]="currentCourse.path + '/' + level"
-          routerLinkActive="active"
-          >{{ level }}</a
-        >
-      </div>
-    </nav>
-    <router-outlet></router-outlet>
-  `,
+        @for (course of courses; track course) {
+          <a
+            style="margin-right: 10px;"
+            [routerLink]="course.path"
+            routerLinkActive="active"
+            [title]="course.tooltip"
+            >{{ course.name }}</a
+            >
+          }
+        </div>
+    
+        <div [style.margin-bottom.px]="20">
+          @for (level of currentCourse.levels; track level) {
+            <a
+              style="margin-right: 10px;"
+              [routerLink]="currentCourse.path + '/' + level"
+              routerLinkActive="active"
+              >{{ level }}</a
+              >
+            }
+          </div>
+        </nav>
+        <router-outlet></router-outlet>
+    `,
     styles: [
         `
       .active {
@@ -112,7 +114,8 @@ export class AppComponent {
           pathMatch: "full",
           redirectTo: "dependency-injection"
         }
-      ]
+      ],
+      { useHash: false }
       //{ enableTracing: true }
     )
   ],

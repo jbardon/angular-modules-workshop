@@ -36,7 +36,6 @@ export class ModuleLoadingService {
   constructor(
     private compiler: Compiler,
     private injector: Injector,
-    private componentFactoryResolver: ComponentFactoryResolver
   ) {}
 
   // Manual lazy loading: same behavior as Angular router with loadChildren
@@ -66,9 +65,6 @@ export class ModuleLoadingService {
     component: any,
     target: ViewContainerRef
   ) {
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      component
-    );
-    target.createComponent(componentFactory, null, module.injector);
+    target.createComponent(component, { injector: module.injector });
   }
 }
